@@ -1,4 +1,4 @@
 unix-config-files
 =================
 
-my dot files
+my Unix config/dot files
