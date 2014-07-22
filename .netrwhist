@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Volumes/lala/Documents/trunk/Scripts/ProvisionMEpython'
+let g:netrw_dirhist_2='/Volumes/lala/Documents/trunk'
+let g:netrw_dirhist_3='/Volumes/lala/Documents/trunk/Projects'
+let g:netrw_dirhist_4='/Volumes/lala/Documents/trunk/Projects/TODO'
+let g:netrw_dirhist_5='/Volumes/lala/Documents/trunk'
+let g:netrw_dirhist_6='/Volumes/lala/Documents/trunk/Projects'
+let g:netrw_dirhist_7='/Volumes/lala/Documents/trunk'
+let g:netrw_dirhist_8='/Volumes/lala/Documents/trunk/Scripts'
+let g:netrw_dirhist_9='/Volumes/lala/Documents/trunk/Scripts/ProvisionMEpython'
