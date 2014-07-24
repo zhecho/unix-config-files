@@ -11,9 +11,7 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " colorscheme
-colorscheme darkblue
-
-
+"colorscheme delek
 " Enable syntax highlight 
 filetype off
 filetype plugin indent on 
@@ -67,27 +65,19 @@ set wildignore+=*/coverage/*
 
 
 " Settings for python-mode
-" Note: I'm no longer using this. Leave this commented out
-" and uncomment the part about jedi-vim instead
-" cd ~/.vim/bundle
-" git clone https://github.com/klen/python-mode
-"" map <Leader>g :call RopeGotoDefinition()<CR>
-"" let ropevim_enable_shortcuts = 1
-"" let g:pymode_rope_goto_def_newwin = "vnew"
-"" let g:pymode_rope_extended_complete = 1
-"" let g:pymode_breakpoint = 0
-"" let g:pymode_syntax = 1
-"" let g:pymode_syntax_builtin_objs = 0
-"" let g:pymode_syntax_builtin_funcs = 0
-"" map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
-
+" Note: install modules sudo easy_install ipython && sudo easy_install ipdb
 " Settings for jedi-vim
 " cd ~/.vim/bundle && git clone git://github.com/davidhalter/jedi-vim.git
-let g:jedi#usages_command = "<leader>z"
-let g:jedi#popup_on_dot = 0
+"let g:jedi#usages_command = "<leader>z"
+"let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
+
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
+
+"Omnicompletion 
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
@@ -111,5 +101,30 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 " mkdir -p ~/.vim/ftplugin
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
 set nofoldenable
+
+" http://http://ethanschoonover.com/solarized/vim-colors-solarized
+" vim-colors-solarized
+" cd ~/.vim/bundle && 
+" git clone git://github.com/altercation/vim-colors-solarized.git
+" You should put solarized.vim in ~/.vim/colors/ !!!!!!!
+" make link  
+" cd ~/.vim/ && ln -s ~/.vim/bundle/vim-colors-solarized/colors
+" or movi it
+" mv ~/.vim/bundle/vim-colors-solarized/colors ~/.vim/
+
+"This is set to 16 by default, meaning that Solarized will attempt to use the
+"standard 16 colors of your terminal emulator. You will need to set those
+"colors to the correct Solarized values either manually or by importing one of
+"the many colorscheme available for popular terminal emulators and Xdefaults.
+let g:solarized_termcolors=256
+" If you use a terminal emulator with a transparent background and Solarized
+" isn’t displaying the background color transparently, set this to 1 and
+" Solarized will use the default (transparent) background of the terminal
+" emulator. urxvt required this in my testing; iTerm2 did not.
+let g:solarized_termtrans =1 
+syntax enable
+set background=dark
+"set background=light
+colorscheme solarized
 
 
