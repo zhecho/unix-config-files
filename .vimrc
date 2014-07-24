@@ -75,6 +75,7 @@ let g:jedi#popup_select_first = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 
+
 "Omnicompletion 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
@@ -128,3 +129,7 @@ set background=dark
 colorscheme solarized
 
 
+
+" disable history of browsing 
+" http://stackoverflow.com/questions/9850360/what-is-netrwhist
+let g:netrw_dirhistmax = 0
