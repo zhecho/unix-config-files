@@ -110,8 +110,8 @@ set nofoldenable
 " You should put solarized.vim in ~/.vim/colors/ !!!!!!!
 " make link  
 " cd ~/.vim/ && ln -s ~/.vim/bundle/vim-colors-solarized/colors
-" or movi it
-" mv ~/.vim/bundle/vim-colors-solarized/colors ~/.vim/
+" or move it
+" cd ~/.vim/bundle && mv vim-colors-solarized/* .
 
 "This is set to 16 by default, meaning that Solarized will attempt to use the
 "standard 16 colors of your terminal emulator. You will need to set those
