@@ -2,7 +2,28 @@
 autocmd! bufwritepost .vimrc source %
 set encoding=utf-8
 " map f2 -redo command
-map <F2> <c-r>
+nmap <F2> :update!<CR>
+imap <F2> <C-O>:update!<CR>
+"       move between tabs vim keys  тест на бг-то
+nnoremap th  :tabfirst<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tn  :tabnew<CR>
+
+"       Stop running in vi-compatible mode.
+set nocompatible
+"       Remove highlight from last search nohl
+nohl
+nmap <F10> :nohl <CR>
+imap <F12> <C-O><F12>
+" execute with F5
+nmap <F5> :!./%<CR>
+"       git diff %
+nmap <F9> :!git diff %<CR>
+nmap <F8> :!git commit %<CR>
+nmap <F7> :set nonumber<CR>
+
 syntax on
 
 " Show white spaces
@@ -110,8 +131,8 @@ set nofoldenable
 " You should put solarized.vim in ~/.vim/colors/ !!!!!!!
 " make link  
 " cd ~/.vim/ && ln -s ~/.vim/bundle/vim-colors-solarized/colors
-" or move it
-" cd ~/.vim/bundle && mv vim-colors-solarized/* .
+" or movi it
+" mv ~/.vim/bundle/vim-colors-solarized/colors ~/.vim/
 
 "This is set to 16 by default, meaning that Solarized will attempt to use the
 "standard 16 colors of your terminal emulator. You will need to set those
@@ -126,6 +147,7 @@ let g:solarized_termtrans =1
 syntax enable
 set background=dark
 "set background=light
+"set background=white
 colorscheme solarized
 
 
