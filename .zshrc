@@ -102,7 +102,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Aliases that you don't want to put in git
+source $HOME/.zshrc-aliases
+
 alias ll="ls -lart"
+
+export LC_ALL=en_US.UTF-8
 
 
 # direvn
