@@ -46,7 +46,7 @@ ZSH_THEME="avit"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -59,7 +59,7 @@ ZSH_THEME="avit"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -70,6 +70,7 @@ ZSH_THEME="avit"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    pyenv
 	git 
 	aws 
 	autopep8
@@ -82,7 +83,8 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -105,11 +107,15 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases that you don't want to put in git
 source $HOME/.zshrc-aliases
-
+# Other public aliases
 alias ll="ls -lart"
 
-export LC_ALL=en_US.UTF-8
-
+show_virtual_env() {
+    if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+        echo "($(basename $VIRTUAL_ENV))"
+    fi
+}
+PS1='$(show_virtual_env)'$PS1
 
 # direvn
 eval "$(direnv hook zsh)"
