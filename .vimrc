@@ -21,7 +21,7 @@ set nocompatible
 " Enable syntax highlight
 filetype off 
 filetype plugin indent on
-syntax on
+syntax enable
 
 " disable bell
 set visualbell
@@ -113,7 +113,7 @@ call plug#end()
 " let g:UltiSnipsEditSplit="vertical"
 
 " colorscheme patch for Windows bash cause that terminal is 16 bit 
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 " let g:solarized_termcolors=16
 " let g:solarized_termtrans=1
 
