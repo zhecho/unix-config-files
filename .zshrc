@@ -107,6 +107,7 @@ export LC_ALL=en_US.UTF-8
 
 # Aliases that you don't want to put in git
 source $HOME/.zshrc-aliases
+
 # Other public aliases
 alias ll="ls -lart"
 
@@ -117,6 +118,10 @@ show_virtual_env() {
 }
 PS1='$(show_virtual_env)'$PS1
 
-# direvn
+# dir environment 
 eval "$(direnv hook zsh)"
+
+# assume-role 
+alias assume-role='function(){eval $(command assume-role $@);}'
+
 
