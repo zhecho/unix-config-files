@@ -1,6 +1,29 @@
+
+
+
+snippet output
+output "${1:OUTPUT_VAR}" {
+	value = "${${2:aws_instance.${3:INSTANCE}.$1}}"
+}
+endsnippet
+
+snippet variable
+variable "${1:NAME}" {
+	description = "${2:Internal var: $1}"
+	# type should be one of string | list | map
+	type = ${3:map}
+	default = ${4:{
+		key1 = "$5"
+		key2 = "$6"
+	}
+	$0
+	}
+} 
+endsnippet
+
 snippet aws
 provider "aws" {
-    region = "${1}"
+    region = "${1:eu-west-1}"
 }
 endsnippet
 snippet r_aws_acm_certificate
@@ -1286,16 +1309,44 @@ resource "aws_elastictranscoder_preset" "${1}" {
     container = "${2}"
 }
 endsnippet
+
 snippet r_aws_elb
-resource "aws_elb" "${1}" {
+resource "aws_elb" "${1:ELB_NAME}" {
+    name = "tf-elb-$1"
+    availability_zones = [ ${2:"${data.aws_availability_zones.all.names}"} ] 
+    security_groups = [ "${aws_security_group.${3:ELB_SEC_GRP_NAME}.id}" ] 
+
     listener {
-        instance_port = 1
-        instance_protocol = ""
-        lb_port = 1
-        lb_protocol = ""
+        lb_port = ${4:80} 
+        lb_protocol = "${5:http}"
+        instance_port = ${6:"${var.server_port"}}
+        instance_protocol = "${7:http}"
     }
 }
 endsnippet
+
+snippet r_aws_elb_health_check
+resource "aws_elb" "${1:ELB_NAME}" {
+    name = "tf-elb-$1"
+    availability_zones = [ ${2:"${data.aws_availability_zones.all.names}"} ] 
+    security_groups = [ "${aws_security_group.${3:ELB_SEC_GRP_NAME}.id}" ] 
+
+    listener {
+        lb_port = ${4:80} 
+        lb_protocol = "${5:http}"
+        instance_port = ${6:"${var.server_port}"}
+        instance_protocol = "${7:http}"
+    }
+    health_check {
+        healthy_threshold = ${8:2}
+        unhealthy_threshold = ${9:2}
+        timeout = ${10:3}
+        interval = ${11:30}
+        target = "${12:HTTP:${var.server_port}/}" 
+    }
+}
+endsnippet
+
 snippet r_aws_elb_attachment
 resource "aws_elb_attachment" "${1}" {
     elb = "${2}"
@@ -1621,9 +1672,13 @@ resource "aws_inspector_resource_group" "${1}" {
 }
 endsnippet
 snippet r_aws_instance
-resource "aws_instance" "${1}" {
+resource "aws_instance" "${1:instance}" {
     ami = "${2}"
-    instance_type = "${3}"
+    instance_type = "${3:t2.micro}"
+    $0
+    tags = {
+  	  Name = "terraform-$1"
+  	}
 }
 endsnippet
 snippet r_aws_internet_gateway
@@ -2245,6 +2300,7 @@ resource "aws_redshift_parameter_group" "${1}" {
     name = "${3}"
 }
 endsnippet
+
 snippet r_aws_redshift_security_group
 resource "aws_redshift_security_group" "${1}" {
     ingress {
@@ -2395,9 +2451,60 @@ resource "aws_secretsmanager_secret_version" "${1}" {
 endsnippet
 snippet r_aws_security_group
 resource "aws_security_group" "${1}" {
-    
+   ${0} 
 }
 endsnippet
+
+snippet r_aws_security_group_both_directions
+resource "aws_security_group" "${1:INSTANCE_NAME}" { 
+    name = "tf-sg-$1"
+
+    ingress {
+ 	  from_port = ${2:8080}
+ 	  to_port = ${3:8080}
+ 	  protocol = "${4:tcp}"
+	  # Get my real IP address
+ 	  cidr_blocks = [ "`curl ifconfig.me`/32" ]
+ 	}
+ 	egress {
+ 	  from_port = ${5:0}
+ 	  to_port = ${6:0}
+ 	  protocol = "${7:-1}"
+	  # Get my real IP address
+ 	  cidr_blocks = [ "${8:0.0.0.0/0}" ]
+ 	}
+} 
+endsnippet
+
+snippet r_aws_security_group_egress
+resource "aws_security_group" "${1:INSTANCE_NAME}" { 
+	name = "tf-sg-$1"
+
+ 	egress {
+ 	  from_port = ${2:0}
+ 	  to_port = ${3:0}
+ 	  protocol = "${4:-1}"
+	  # Get my real IP address
+ 	  cidr_blocks = [ "${5:0.0.0.0/0}" ]
+ 	}
+} 
+endsnippet
+
+snippet r_aws_security_group_ingress
+resource "aws_security_group" "${1:INSTANCE_NAME}" { 
+	name = "tf-sg-$1"
+
+ 	ingress {
+ 	  from_port = ${2:8080}
+ 	  to_port = ${3:8080}
+ 	  protocol = "${4:tcp}"
+	  # Get my real IP address
+ 	  cidr_blocks = [ "`curl ifconfig.me`/32" ]
+ 	}
+} 
+endsnippet
+
+
 snippet r_aws_security_group_rule
 resource "aws_security_group_rule" "${1}" {
     from_port = ${2}
@@ -2841,6 +2948,11 @@ resource "aws_vpc_peering_connection_options" "${1}" {
     vpc_peering_connection_id = "${2}"
 }
 endsnippet
+
+snippet r_aws_vpc_security_group_ids 
+vpc_security_group_ids = ["${aws_security_group.${1:RESOURCE_NAME}.id}"]
+endsnippet 
+
 snippet r_aws_vpn_connection
 resource "aws_vpn_connection" "${1}" {
     customer_gateway_id = "${2}"

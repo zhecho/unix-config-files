@@ -151,6 +151,8 @@ autocmd filetype js nnoremap <F4> :call SaveMakeAndRunJS()<CR>
 autocmd filetype html setlocal shiftwidth=2 tabstop=2
 autocmd filetype yml setlocal shiftwidth=2 tabstop=2
 autocmd filetype yaml setlocal shiftwidth=2 tabstop=2
+autocmd filetype terraform setlocal shiftwidth=4 tabstop=4
+autocmd filetype snippets setlocal shiftwidth=4 tabstop=4
 
 " nmap <F10> :! python %:p <CR>
 " execute with F5
@@ -174,6 +176,8 @@ au FileType python nnoremap <F9> :call SaveRunPyInNewWindow()<CR>
 " Set filetype as terraform file
 au BufRead,BufNewFile *.tf       setfiletype terraform
 
+" Set filetype as snippets file
+au BufRead,BufNewFile *.snippets       setfiletype snippets
 
 function! SaveAndRunPython()
         " chain command with pipe 
@@ -366,6 +370,7 @@ let s:comment_map = {
     \   "bash_profile": '#',
     \   "gitconfig": '#',
     \   "terraform": '#',
+    \   "snippets": '#',
     \   "yaml": '#',
     \   "yml": '#',
     \   "mail": '>',
