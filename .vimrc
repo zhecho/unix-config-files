@@ -106,6 +106,9 @@ Plug 'Valloric/YouCompleteMe'
 " Colorscheme
 " Plug 'jnurmine/Zenburn'
 
+" Terraform plugin
+Plug 'hashivim/vim-terraform'
+
 call plug#end()
 
 "
@@ -166,6 +169,10 @@ au FileType python map <silent> <leader>v ofrom IPython import embed; embed()<es
 " save and run python code by pressing F10 key
 au FileType python nnoremap <F10> :call SaveAndRunPython()<CR>
 au FileType python nnoremap <F9> :call SaveRunPyInNewWindow()<CR>
+
+
+" Set filetype as terraform file
+au BufRead,BufNewFile *.tf       setfiletype terraform
 
 
 function! SaveAndRunPython()
@@ -358,6 +365,7 @@ let s:comment_map = {
     \   "bashrc": '#',
     \   "bash_profile": '#',
     \   "gitconfig": '#',
+    \   "terraform": '#',
     \   "yaml": '#',
     \   "yml": '#',
     \   "mail": '>',

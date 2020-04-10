@@ -74,6 +74,7 @@ plugins=(
 	git 
 	aws 
 	autopep8
+    terraform
  )
 
 source $ZSH/oh-my-zsh.sh
@@ -125,3 +126,6 @@ eval "$(direnv hook zsh)"
 alias assume-role='function(){eval $(command assume-role $@);}'
 
 
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
