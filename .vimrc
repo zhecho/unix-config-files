@@ -109,6 +109,9 @@ Plug 'Valloric/YouCompleteMe'
 " Terraform plugin
 Plug 'hashivim/vim-terraform'
 
+" NerdTree
+Plug 'preservim/nerdtree'
+
 call plug#end()
 
 "
