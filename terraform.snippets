@@ -1,21 +1,21 @@
 
 snippet output
 output "${1:OUTPUT_VAR}" {
-	value = "${${2:aws_instance.${3:INSTANCE}.$1}}"
+    value = "${${2:aws_instance.${3:INSTANCE}.$1}}"
 }
 endsnippet
 
 snippet variable
 variable "${1:NAME}" {
-	description = "${2:Internal var: $1}"
-	# type should be one of string | list | map
-	type = ${3:map}
-	default = ${4:{
-		key1 = "$5"
-		key2 = "$6"
-	}
-	$0
-	}
+    description = "${2:Internal var: $1}"
+    # type should be one of string | list | map
+    type = ${3:map}
+    default = ${4:{
+        key1 = "$5"
+        key2 = "$6"
+    }
+    $0
+    }
 } 
 endsnippet
 

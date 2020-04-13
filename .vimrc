@@ -14,7 +14,6 @@ nnoremap tn  :tabnew
 " SpellCheck
 set spell
 
-
 " Stop running in vi-compatible mode.
 set nocompatible
 
@@ -25,7 +24,6 @@ syntax enable
 
 " disable bell
 set visualbell
-"set t_vb=
 
 " History
 set history=700
@@ -36,7 +34,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-
 
 " Make search case insensitive
 set hlsearch
@@ -116,30 +113,8 @@ call plug#end()
 
 "
 " " If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit="horizontal"
 
-" colorscheme patch for Windows bash cause that terminal is 16 bit 
-" let g:solarized_termcolors=256
-" let g:solarized_termcolors=16
-" let g:solarized_termtrans=1
-
-" set t_Co=16
-" set background="dark"
-" set background=light
-" colorscheme solarized
-if has('gui_running')
-  set background=dark
-  " set background=light
-  colorscheme solarized
-  " colorscheme pablo
-else
-  " colorscheme zenburn
-  " colorscheme pablo
-  " colorscheme pablo
-  " set background=light
-  set background=dark
-  colorscheme solarized
-endif
 
 " highlight spell check with underlines
 hi clear SpellBad
@@ -149,13 +124,21 @@ imap <F12> <C-O><F12>
 " Add a hotkey to save, compile and run C++ code
 " autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 
+" Set filetype as terraform file
+au BufRead,BufNewFile *.tf  setfiletype terraform
+
+" Set filetype as snippets file
+au BufRead,BufNewFile *.snippets setfiletype snippets
+
+
 autocmd filetype cpp nnoremap <F4> :call SaveMakeAndRun()<CR>
 autocmd filetype js nnoremap <F4> :call SaveMakeAndRunJS()<CR>
 autocmd filetype html setlocal shiftwidth=2 tabstop=2
 autocmd filetype yml setlocal shiftwidth=2 tabstop=2
 autocmd filetype yaml setlocal shiftwidth=2 tabstop=2
-autocmd filetype terraform setlocal shiftwidth=4 tabstop=4
-autocmd filetype snippets setlocal shiftwidth=4 tabstop=4
+autocmd filetype terraform setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd filetype snippets setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+
 
 " nmap <F10> :! python %:p <CR>
 " execute with F5
@@ -174,13 +157,6 @@ au FileType python map <silent> <leader>v ofrom IPython import embed; embed()<es
 " save and run python code by pressing F10 key
 au FileType python nnoremap <F10> :call SaveAndRunPython()<CR>
 au FileType python nnoremap <F9> :call SaveRunPyInNewWindow()<CR>
-
-
-" Set filetype as terraform file
-au BufRead,BufNewFile *.tf       setfiletype terraform
-
-" Set filetype as snippets file
-au BufRead,BufNewFile *.snippets       setfiletype snippets
 
 function! SaveAndRunPython()
         " chain command with pipe 
@@ -294,6 +270,19 @@ nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " let g:airline#extensions#syntastic#enabled=1
 " let g:airline#extensons#branch#format=1
 " let g:airline#extensions#tabline#buffer_idx_mode=1
+
+"""""""""""""""
+"  Solarized  "
+"""""""""""""""
+" let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+let g:solarized_degrade = 0
+let g:solarized_bold = 1
+let g:solarized_underline = 1
+let g:solarized_italic = 1
+let g:solarized_contrast = "normal"
+let g:solarized_visibility= "normal"
+
 
 " ----------------------------
 "        ultisnips
@@ -447,3 +436,21 @@ endfunction
 command! -range -nargs=1 Entities call HtmlEntities(<line1>, <line2>, <args>)
 noremap <silent> <Leader>h :Entities 0<CR>
 noremap <silent> <Leader>H :Entities 1<CR>
+
+
+
+if has('gui_running')
+  set background=dark
+  " set background=light
+  colorscheme solarized
+  " colorscheme pablo
+else
+  " colorscheme zenburn
+  " colorscheme pablo
+  " colorscheme pablo
+  " set background=light
+  set background=dark
+  colorscheme solarized
+endif
+
+
