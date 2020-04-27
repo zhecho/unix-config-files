@@ -72,9 +72,9 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
     pyenv
 	git 
-	aws 
 	autopep8
     terraform
+	aws 
  )
 
 source $ZSH/oh-my-zsh.sh
@@ -106,10 +106,10 @@ export LC_ALL=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Aliases that you don't want to put in git
+# Private Aliases (not in git repo)
 source $HOME/.zshrc-aliases
 
-# Other public aliases
+# Public aliases
 alias ll="ls -lart"
 
 show_virtual_env() {
@@ -117,15 +117,26 @@ show_virtual_env() {
         echo "($(basename $VIRTUAL_ENV))"
     fi
 }
-PS1='$(show_virtual_env)'$PS1
+
+# show python virtual environment 
+# PROMPT='$(show_virtual_env)'$PROMPT
+
+# show aws current role
+# PROMPT='$(aws_prompt_info)'$PROMPT
+# export SHOW_AWS_PROMPT="true"
 
 # dir environment 
 eval "$(direnv hook zsh)"
 
 # assume-role 
-alias assume-role='function(){eval $(command assume-role $@);}'
-
-
+# alias assume-role='function(){eval $(command assume-role $@);}'
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+export AWS_VAULT_KEYCHAIN_NAME=aws-vault
+export AWS_VAULT_PROMPT=osascript
+# Required to be present by terraform
+export AWS_SDK_LOAD_CONFIG=true
+
+
