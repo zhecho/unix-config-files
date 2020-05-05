@@ -19,9 +19,10 @@ variable "${1:NAME}" {
 } 
 endsnippet
 
-snippet aws
+snippet provider_aws
 provider "aws" {
     region = "${1:eu-west-1}"
+    version = "${2:~> 2.8}"
 }
 endsnippet
 snippet r_aws_acm_certificate

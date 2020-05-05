@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="avit"
+ZSH_THEME="mira"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -71,11 +71,13 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     pyenv
-	git 
-	autopep8
+    git 
+    autopep8
     terraform
-	aws 
- )
+    aws 
+    docker
+    docker-compose
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,12 +108,6 @@ export LC_ALL=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Private Aliases (not in git repo)
-source $HOME/.zshrc-aliases
-
-# Public aliases
-alias ll="ls -lart"
-
 show_virtual_env() {
     if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
         echo "($(basename $VIRTUAL_ENV))"
@@ -131,12 +127,22 @@ eval "$(direnv hook zsh)"
 # assume-role 
 # alias assume-role='function(){eval $(command assume-role $@);}'
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /usr/local/bin/terraform terraform
 
 export AWS_VAULT_KEYCHAIN_NAME=aws-vault
 export AWS_VAULT_PROMPT=osascript
 # Required to be present by terraform
 export AWS_SDK_LOAD_CONFIG=true
+
+# pyenv
+eval "$(pyenv init -)"
+
+
+# Private Aliases (not in git repo)
+source $HOME/.zshrc-aliases
+
+# Public aliases
+alias ll="ls -lart"
 
 
