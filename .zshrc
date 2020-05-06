@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -9,7 +9,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="mira"
+# ZSH_THEME="mira"
+ZSH_THEME="bira"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,13 +71,17 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    pyenv
+    osx
     git 
     autopep8
     terraform
     aws 
     docker
     docker-compose
+    python
+    direnv
+    pyenv
+    virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -108,21 +113,9 @@ export LC_ALL=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-show_virtual_env() {
-    if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
-        echo "($(basename $VIRTUAL_ENV))"
-    fi
-}
-
-# show python virtual environment 
-# PROMPT='$(show_virtual_env)'$PROMPT
-
 # show aws current role
 # PROMPT='$(aws_prompt_info)'$PROMPT
-# export SHOW_AWS_PROMPT="true"
-
-# dir environment 
-eval "$(direnv hook zsh)"
+export SHOW_AWS_PROMPT="true"
 
 # assume-role 
 # alias assume-role='function(){eval $(command assume-role $@);}'
@@ -134,10 +127,6 @@ export AWS_VAULT_KEYCHAIN_NAME=aws-vault
 export AWS_VAULT_PROMPT=osascript
 # Required to be present by terraform
 export AWS_SDK_LOAD_CONFIG=true
-
-# pyenv
-eval "$(pyenv init -)"
-
 
 # Private Aliases (not in git repo)
 source $HOME/.zshrc-aliases
