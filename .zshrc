@@ -115,13 +115,11 @@ export LC_ALL=en_US.UTF-8
 
 # show aws current role
 # PROMPT='$(aws_prompt_info)'$PROMPT
+
 export SHOW_AWS_PROMPT="true"
 
 # assume-role 
 # alias assume-role='function(){eval $(command assume-role $@);}'
-
-# autoload -U +X bashcompinit && bashcompinit
-# complete -o nospace -C /usr/local/bin/terraform terraform
 
 export AWS_VAULT_KEYCHAIN_NAME=aws-vault
 export AWS_VAULT_PROMPT=osascript
