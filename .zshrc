@@ -132,4 +132,5 @@ source $HOME/.zshrc-aliases
 # Public aliases
 alias ll="ls -lart"
 
-
+#compdef awsume
+#_arguments "*: :($(awsume-autocomplete))"

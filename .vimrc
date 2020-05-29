@@ -310,10 +310,16 @@ let g:syntastic_check_on_wq = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                      Some frequently forgetable stuff                       "
+"                      Some frequently forgettable stuff                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Copy to <code>system</code> clipboard -- "+yy  - copy line to system clipboard
+" 
+" let @+=@"     - copy default register into the clipboard
+" let @*=@"     - copy default register into the X-11 primary (mouse clipboard)
+" let @+=@a     - copy 'a' register into the clipboard
 
+" \y will copy selection to clipboard
+vnoremap <leader>y y :let @+=@"<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Macros                                    "
