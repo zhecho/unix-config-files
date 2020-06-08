@@ -121,6 +121,9 @@ export SHOW_AWS_PROMPT="true"
 # assume-role 
 # alias assume-role='function(){eval $(command assume-role $@);}'
 
+# ipython in vi mode
+alias vpython='ipython --TerminalInteractiveShell.editing_mode=vi'
+
 export AWS_VAULT_KEYCHAIN_NAME=aws-vault
 export AWS_VAULT_PROMPT=osascript
 # Required to be present by terraform
@@ -134,3 +137,12 @@ alias ll="ls -lart"
 
 #compdef awsume
 #_arguments "*: :($(awsume-autocomplete))"
+#
+
+# fortune
+fortune
+
+
+
+
+

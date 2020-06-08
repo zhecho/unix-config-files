@@ -454,8 +454,8 @@ else
   " colorscheme zenburn
   " colorscheme pablo
   " colorscheme pablo
-  " set background=light
-  set background=dark
+  set background=light
+  " set background=dark
   colorscheme solarized
 endif
 
