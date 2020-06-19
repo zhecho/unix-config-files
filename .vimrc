@@ -53,7 +53,7 @@ set nu
 set tw=79		" whdth (used for gd) 
 "set nowrap		" don't auto wrap on load
 "set fo-=t		" don't auto. wrap test when typing
-set colorcolumn=80
+set colorcolumn=100
 highlight ColorColumn ctermbg=LightGreen
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
@@ -74,8 +74,12 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " syntastic or vim-flake8
+" NOTE: pip install flake8 pylint ... or just read :help syntastic-checkers
 Plug 'vim-syntastic/syntastic'
-"
+
+" vim-autoformat https://vimawesome.com/plugin/vim-autoformat
+Plug 'Chiel92/vim-autoformat'
+
 " Airline is deprecated.. new stuff is powerline 
 " Plug 'vim-airline/vim-airline'
 " Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -303,10 +307,28 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0 
+" Jump to next prev error with "<" and ">"
+noremap < :lprevious<cr>
+noremap > :lnext<cr>
+
+" NOTE: check doc for syntastic python-pylint --> :help syntastic-python-pylint
+"
+" This function search for .pylintrc file in upper folders and use it as pylint
+" blueprint 4.9 in https://vimawesome.com/plugin/syntastic#faqconfig
+function! FindConfig(prefix, what, where)
+    let cfg = findfile(a:what, escape(a:where, ' ') . ';')
+    return cfg !=# '' ? ' ' . a:prefix . ' ' . shellescape(cfg) : ''
+endfunction
+
+autocmd FileType python let b:syntastic_python_pylint_post_args =
+    \ get(g:, 'syntastic_python_pylint_post_args', '') .
+    \ FindConfig('--rcfile', '.pylintrc', expand('<afile>:p:h', 1))
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -454,9 +476,20 @@ else
   " colorscheme zenburn
   " colorscheme pablo
   " colorscheme pablo
-  set background=light
-  " set background=dark
+  " set background=light
+  set background=dark
   colorscheme solarized
 endif
+
+""""""""""""""""""""""""""""""""""""""""""
+"  vim-autoformat related plugin config  "
+""""""""""""""""""""""""""""""""""""""""""
+" https://vimawesome.com/plugin/vim-autoformat
+let g:formatter_yapf_style = 'google'
+" autoformat verbose
+let g:autoformat_verbosemode=1
+" \f will format selection with Autoformat
+noremap <leader>F :Autoformat<CR>
+vnoremap <leader>f :Autoformat<cr>
 
 
