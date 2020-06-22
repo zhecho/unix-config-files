@@ -1,3 +1,13 @@
+snippet md_script
+
+\`\`\`${1:bash|txt|sh|json|js}"
+
+${2:SCRIPT_BODY}
+
+\`\`\`
+
+endsnippet
+
 global !p
 def create_table(snip):
     # retrieving single line from current string and treat it like tabstops count
@@ -23,3 +33,5 @@ endglobal
 pre_expand "create_table(snip)"
 snippet "tb(\d+x\d+)" "Customizable table" br
 endsnippet
+
+

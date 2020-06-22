@@ -131,6 +131,10 @@ imap <F12> <C-O><F12>
 " Set filetype as terraform file
 au BufRead,BufNewFile *.tf  setfiletype terraform
 
+" Set filetype as markup file
+au BufRead,BufNewFile *.md  setfiletype markdown
+
+
 " Set filetype as snippets file
 au BufRead,BufNewFile *.snippets setfiletype snippets
 
@@ -141,6 +145,7 @@ autocmd filetype html setlocal shiftwidth=2 tabstop=2
 autocmd filetype yml setlocal shiftwidth=2 tabstop=2
 autocmd filetype yaml setlocal shiftwidth=2 tabstop=2
 autocmd filetype terraform setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab textwidth=0
 autocmd filetype snippets setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
 
