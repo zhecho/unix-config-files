@@ -1,5 +1,20 @@
-snippet md_script
+global !p
+def create_heading(snip):
+    # get number after 'h'
+    number_of_hash = int(snip.buffer[snip.line].strip()[1:])
+    # erase current line
+    snip.buffer[snip.line] = ''
+    # create string for propper header 
+    anon_snippet_body = str("#"*number_of_hash) + str(' ${1:Heading ') + f'{number_of_hash}' + '}'
+    # expand anonymous snippet
+    snip.expand_anon(anon_snippet_body)
+endglobal
 
+pre_expand "create_heading(snip)"
+snippet "h(\d+)" "Create heading " br
+endsnippet
+
+snippet md_script
 \`\`\`${1:bash|txt|sh|json|js}"
 
 ${2:SCRIPT_BODY}
