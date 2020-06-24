@@ -18,7 +18,7 @@ set spell
 set nocompatible
 
 " Enable syntax highlight
-filetype off 
+" filetype off 
 filetype plugin indent on
 syntax enable
 
@@ -63,15 +63,8 @@ Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " Plug 'junegunn/vim-easy-align'
 
-" Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " syntastic or vim-flake8
 " NOTE: pip install flake8 pylint ... or just read :help syntastic-checkers
@@ -80,39 +73,13 @@ Plug 'vim-syntastic/syntastic'
 " vim-autoformat https://vimawesome.com/plugin/vim-autoformat
 Plug 'Chiel92/vim-autoformat'
 
-" Airline is deprecated.. new stuff is powerline 
-" Plug 'vim-airline/vim-airline'
-" Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-
 Plug 'Valloric/YouCompleteMe'
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
-" Plug 'vim-scripts/Conque-GDB'
-" Initialize plugin system
-
-" Java Script Plugins
-" Plug 'jelera/vim-javascript-syntax'
-" Plug 'marijnh/tern_for_vim'
-
-" Colorscheme
-" Plug 'jnurmine/Zenburn'
 
 " Terraform plugin
 Plug 'hashivim/vim-terraform'
 
 " NerdTree
 Plug 'preservim/nerdtree'
-
 call plug#end()
 
 "
@@ -138,6 +105,7 @@ au BufRead,BufNewFile *.md  setfiletype markdown
 " Set filetype as snippets file
 au BufRead,BufNewFile *.snippets setfiletype snippets
 
+set textwidth=100
 
 autocmd filetype cpp nnoremap <F4> :call SaveMakeAndRun()<CR>
 autocmd filetype js nnoremap <F4> :call SaveMakeAndRunJS()<CR>
