@@ -50,7 +50,7 @@ set wildmenu
 
 " Showing line numbers and length
 set nu
-set tw=79		" whdth (used for gd) 
+set tw=100		" whdth (used for gd) 
 "set nowrap		" don't auto wrap on load
 "set fo-=t		" don't auto. wrap test when typing
 set colorcolumn=100
@@ -66,17 +66,21 @@ Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
+" Terraform plugin
+Plug 'hashivim/vim-terraform'
+
 " syntastic or vim-flake8
-" NOTE: pip install flake8 pylint ... or just read :help syntastic-checkers
+" NOTE: pip install pylint flake8 .. or just read :help syntastic-checkers
 Plug 'vim-syntastic/syntastic'
+
+" https://github.com/juliosueiras/vim-terraform-completion#vim-terraform-completion-with-linter---demosdemomd
+Plug 'juliosueiras/vim-terraform-completion'
 
 " vim-autoformat https://vimawesome.com/plugin/vim-autoformat
 Plug 'Chiel92/vim-autoformat'
 
 Plug 'Valloric/YouCompleteMe'
 
-" Terraform plugin
-Plug 'hashivim/vim-terraform'
 
 " NerdTree
 Plug 'preservim/nerdtree'
@@ -285,6 +289,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0 
+
 " Jump to next prev error with "<" and ">"
 noremap < :lprevious<cr>
 noremap > :lnext<cr>
