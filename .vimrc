@@ -66,18 +66,19 @@ Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" Terraform plugin
-Plug 'hashivim/vim-terraform'
 
 " syntastic or vim-flake8
 " NOTE: pip install pylint flake8 .. or just read :help syntastic-checkers
 Plug 'vim-syntastic/syntastic'
 
+" Terraform plugin
+Plug 'hashivim/vim-terraform'
+
 " https://github.com/juliosueiras/vim-terraform-completion#vim-terraform-completion-with-linter---demosdemomd
 Plug 'juliosueiras/vim-terraform-completion'
 
 " vim-autoformat https://vimawesome.com/plugin/vim-autoformat
-Plug 'Chiel92/vim-autoformat'
+" Plug 'Chiel92/vim-autoformat'
 
 Plug 'Valloric/YouCompleteMe'
 

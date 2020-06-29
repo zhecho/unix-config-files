@@ -1,0 +1,30 @@
+[MESSAGES CONTROL]
+
+disable=missing-module-docstring,
+        line-too-long,
+        too-many-locals,
+        too-many-branches,
+        too-many-statements,
+        too-many-nested-blocks,
+        wrong-import-order,
+        global-variable-undefined,
+        unused-argument,
+        bare-except,
+        import-error,
+        E1101,
+        W,
+        R0801
+
+[SIMILARITIES]
+
+# Minimum lines number of a similarity.
+min-similarity-lines=5
+
+# Ignore comments when computing similarities.
+ignore-comments=yes
+
+# Ignore docstrings when computing similarities.
+ignore-docstrings=no
+
+# Ignore imports when computing similarities.
+ignore-imports=yes
