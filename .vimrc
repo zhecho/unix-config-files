@@ -1,4 +1,4 @@
-"autoload vimrc 
+"autoload vimrc
 autocmd! bufwritepost .vimrc source %
 set encoding=utf-8
 " map f2 -redo command
@@ -9,7 +9,7 @@ nnoremap th  :tabfirst<CR>
 nnoremap tk  :tabnext<CR>
 nnoremap tj  :tabprev<CR>
 nnoremap tl  :tablast<CR>
-nnoremap tn  :tabnew 
+nnoremap tn  :tabnew
 
 " SpellCheck
 set spell
@@ -18,7 +18,7 @@ set spell
 set nocompatible
 
 " Enable syntax highlight
-" filetype off 
+" filetype off
 filetype plugin indent on
 syntax enable
 
@@ -29,7 +29,7 @@ set visualbell
 set history=700
 set undolevels=700
 
-" Don't use TABS but spaces 
+" Don't use TABS but spaces
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -50,9 +50,9 @@ set wildmenu
 
 " Showing line numbers and length
 set nu
-set tw=100		" whdth (used for gd) 
-"set nowrap		" don't auto wrap on load
-"set fo-=t		" don't auto. wrap test when typing
+set tw=100      " whdth (used for gd)
+"set nowrap     " don't auto wrap on load
+"set fo-=t      " don't auto. wrap test when typing
 set colorcolumn=100
 highlight ColorColumn ctermbg=LightGreen
 
@@ -78,9 +78,12 @@ Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
 
 " vim-autoformat https://vimawesome.com/plugin/vim-autoformat
-" Plug 'Chiel92/vim-autoformat'
+Plug 'Chiel92/vim-autoformat'
 
 Plug 'Valloric/YouCompleteMe'
+
+" editconfig
+Plug 'editorconfig/editorconfig-vim'
 
 
 " NerdTree
@@ -130,8 +133,8 @@ nmap <F6> :w!<CR>:! pytest -v -s <CR>
 nmap <F7> :!echo "Adding current file to git " && git add %<CR>
 nmap <F8> :set nonumber<CR>
 nmap <F9> :!git commit -a && git push<CR>
-"\b --> insert python breakpoint 
-"\v --> insert ipython breakpoint 
+"\b --> insert python breakpoint
+"\v --> insert ipython breakpoint
 " au FileType python map <silent> <leader>b oimport pdb; pdb.set_trace()<esc>
 au FileType python map <silent> <leader>b ofrom IPython.core import debugger; debug = debugger.Pdb().set_trace; debug()<esc>
 au FileType python map <silent> <leader>v ofrom IPython import embed; embed()<esc>
@@ -141,9 +144,9 @@ au FileType python nnoremap <F10> :call SaveAndRunPython()<CR>
 au FileType python nnoremap <F9> :call SaveRunPyInNewWindow()<CR>
 
 function! SaveAndRunPython()
-        " chain command with pipe 
-        exec ':w! | !clear && python '.shellescape('%')
-        redraw!
+    " chain command with pipe
+    exec ':w! | !clear && python '.shellescape('%')
+    redraw!
 endfunction
 
 function! SaveRunPyInNewWindow()
@@ -200,13 +203,13 @@ function! SaveRunPyInNewWindow()
 endfunction
 
 function! SaveMakeAndRun()
-        " chain command with pipe 
-        exec ':w! | !clear && g++ -std=c++11 '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')
-        redraw!
+    " chain command with pipe
+    exec ':w! | !clear && g++ -std=c++11 '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')
+    redraw!
 endfunction
 function! SaveMakeAndRunJS()
-        exec ':w! | !clear && js -e'.shellescape('%').'
-        redraw!
+    exec ':w! | !clear && js -e'.shellescape('%').'
+    redraw!
 endfunction
 
 
@@ -218,7 +221,7 @@ endfunction
 "       g^] - for ambiguas tags
 "       ^t  - for back up the tag stack
 command! MakeTags !ctags -R .
-"set autochdir 
+"set autochdir
 "set tags+=./tags,tags;$HOME
 "set tags+=./tags
 
@@ -289,11 +292,12 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0 
+let g:syntastic_check_on_wq = 0
 
 " Jump to next prev error with "<" and ">"
-noremap < :lprevious<cr>
-noremap > :lnext<cr>
+" NOTE: THINK OF other custom keys
+" noremap < :lprevious<cr>
+" noremap > :lnext<cr>
 
 " NOTE: check doc for syntastic python-pylint --> :help syntastic-python-pylint
 "
@@ -305,8 +309,8 @@ function! FindConfig(prefix, what, where)
 endfunction
 
 autocmd FileType python let b:syntastic_python_pylint_post_args =
-    \ get(g:, 'syntastic_python_pylint_post_args', '') .
-    \ FindConfig('--rcfile', '.pylintrc', expand('<afile>:p:h', 1))
+            \ get(g:, 'syntastic_python_pylint_post_args', '') .
+            \ FindConfig('--rcfile', '.pylintrc', expand('<afile>:p:h', 1))
 
 
 
@@ -314,7 +318,7 @@ autocmd FileType python let b:syntastic_python_pylint_post_args =
 "                      Some frequently forgettable stuff                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Copy to <code>system</code> clipboard -- "+yy  - copy line to system clipboard
-" 
+"
 " let @+=@"     - copy default register into the clipboard
 " let @*=@"     - copy default register into the X-11 primary (mouse clipboard)
 " let @+=@a     - copy 'a' register into the clipboard
@@ -348,39 +352,39 @@ let @q="^i<!-- $a-->j"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  Comments                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:comment_map = { 
-    \   "c": '\/\/',
-    \   "cpp": '\/\/',
-    \   "go": '\/\/',
-    \   "java": '\/\/',
-    \   "javascript": '\/\/',
-    \   "lua": '--',
-    \   "scala": '\/\/',
-    \   "php": '\/\/',
-    \   "python": '#',
-    \   "ruby": '#',
-    \   "rust": '\/\/',
-    \   "sh": '#',
-    \   "desktop": '#',
-    \   "fstab": '#',
-    \   "conf": '#',
-    \   "profile": '#',
-    \   "bashrc": '#',
-    \   "bash_profile": '#',
-    \   "gitconfig": '#',
-    \   "terraform": '#',
-    \   "snippets": '#',
-    \   "yaml": '#',
-    \   "yml": '#',
-    \   "mail": '>',
-    \   "eml": '>',
-    \   "bat": 'REM',
-    \   "ahk": ';',
-    \   "vim": '"',
-    \   "htmldjango": {"start_comment": '{#', "end_comment": '#}'},
-    \   "html": {"start_comment": '<!--', "end_comment": '-->'},
-    \   "css": {"start_comment": '\/\*', "end_comment": '\*\/'},
-    \ }
+let s:comment_map = {
+            \   "c": '\/\/',
+            \   "cpp": '\/\/',
+            \   "go": '\/\/',
+            \   "java": '\/\/',
+            \   "javascript": '\/\/',
+            \   "lua": '--',
+            \   "scala": '\/\/',
+            \   "php": '\/\/',
+            \   "python": '#',
+            \   "ruby": '#',
+            \   "rust": '\/\/',
+            \   "sh": '#',
+            \   "desktop": '#',
+            \   "fstab": '#',
+            \   "conf": '#',
+            \   "profile": '#',
+            \   "bashrc": '#',
+            \   "bash_profile": '#',
+            \   "gitconfig": '#',
+            \   "terraform": '#',
+            \   "snippets": '#',
+            \   "yaml": '#',
+            \   "yml": '#',
+            \   "mail": '>',
+            \   "eml": '>',
+            \   "bat": 'REM',
+            \   "ahk": ';',
+            \   "vim": '"',
+            \   "htmldjango": {"start_comment": '{#', "end_comment": '#}'},
+            \   "html": {"start_comment": '<!--', "end_comment": '-->'},
+            \   "css": {"start_comment": '\/\*', "end_comment": '\*\/'},
+            \ }
 
 function! ToggleComment()
     if has_key(s:comment_map, &filetype)
@@ -388,11 +392,11 @@ function! ToggleComment()
             let comment_leader = s:comment_map[&filetype]["start_comment"]
             let comment_end = s:comment_map[&filetype]["end_comment"]
             if getline('.') =~ "^\\s*".comment_leader."\\(.*\\)".comment_end.""
-                " Uncomment line 
+                " Uncomment line
                 " s/^\s*{#\(.*\)#}/\1/
                 execute "silent s/^\\(\\s*\\)" . comment_leader .  "\\(.*\\)" .  comment_end . "/\\1\\2/"
             else
-                " Comment line 
+                " Comment line
                 execute "silent s/^\\(\\s*\\)\\(.*\\)/\\1" . comment_leader .  "\\2" .  comment_end . "/"
             end
         else
@@ -400,12 +404,12 @@ function! ToggleComment()
             if getline('.') =~ "^\\s*" . comment_leader . " \\(.*\\)"
                 " Uncomment the line
                 execute "silent s/^\\(\\s*\\)" . comment_leader ." ". "\\(.*\\)" . "/\\1\\2/"
-            else 
+            else
                 if getline('.') =~ "^\\s*" . comment_leader."\\(.*\\)"
                     " Uncomment the line
                     execute "silent s/^\\(\\s*\\)" . comment_leader .  "\\(.*\\)" ."/\\1\\2/"
                 else
-"                    Comment the line
+                    "                    Comment the line
                     execute "silent s/^\\(\\s*\\)\\(.*\\)/\\1" . comment_leader . " \\2" . "/"
                     " execute "silent s/^\\(\\s*\\)/" . comment_leader . " \\1/"
                 end
@@ -426,19 +430,19 @@ vnoremap <leader><Space> :call ToggleComment()<cr>
 "          \h - unsecape
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! HtmlEntities(line1, line2, action)
-  let search = @/
-  let range = 'silent ' . a:line1 . ',' . a:line2
-  if a:action == 0  " must convert &amp; last
-    execute range . 'sno/&lt;/</eg'
-    execute range . 'sno/&gt;/>/eg'
-    execute range . 'sno/&amp;/&/eg'
-  else              " must convert & first
-    execute range . 'sno/&/&amp;/eg'
-    execute range . 'sno/</&lt;/eg'
-    execute range . 'sno/>/&gt;/eg'
-  endif
-  nohl
-  let @/ = search
+    let search = @/
+    let range = 'silent ' . a:line1 . ',' . a:line2
+    if a:action == 0  " must convert &amp; last
+        execute range . 'sno/&lt;/</eg'
+        execute range . 'sno/&gt;/>/eg'
+        execute range . 'sno/&amp;/&/eg'
+    else              " must convert & first
+        execute range . 'sno/&/&amp;/eg'
+        execute range . 'sno/</&lt;/eg'
+        execute range . 'sno/>/&gt;/eg'
+    endif
+    nohl
+    let @/ = search
 endfunction
 command! -range -nargs=1 Entities call HtmlEntities(<line1>, <line2>, <args>)
 noremap <silent> <Leader>h :Entities 0<CR>
@@ -447,26 +451,28 @@ noremap <silent> <Leader>H :Entities 1<CR>
 
 
 if has('gui_running')
-  set background=dark
-  " set background=light
-  colorscheme solarized
-  " colorscheme pablo
+    set background=dark
+    " set background=light
+    colorscheme solarized
+    " colorscheme pablo
 else
-  " colorscheme zenburn
-  " colorscheme pablo
-  " colorscheme pablo
-  " set background=light
-  set background=dark
-  colorscheme solarized
+    " colorscheme zenburn
+    " colorscheme pablo
+    " colorscheme pablo
+    " set background=light
+    set background=dark
+    colorscheme solarized
 endif
 
 """"""""""""""""""""""""""""""""""""""""""
 "  vim-autoformat related plugin config  "
 """"""""""""""""""""""""""""""""""""""""""
+" au BufWrite * :Autoformat
 " https://vimawesome.com/plugin/vim-autoformat
 let g:formatter_yapf_style = 'google'
 " autoformat verbose
-let g:autoformat_verbosemode=1
+" let g:autoformat_verbosemode=1
+let g:autoformat_verbosemode=0
 " \f will format selection with Autoformat
 noremap <leader>F :Autoformat<CR>
 vnoremap <leader>f :Autoformat<cr>
