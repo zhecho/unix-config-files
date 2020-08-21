@@ -50,11 +50,11 @@ set wildmenu
 
 " Showing line numbers and length
 set nu
-set tw=100      " whdth (used for gd)
+" set tw=100      " whdth (used for gd)
 "set nowrap     " don't auto wrap on load
 "set fo-=t      " don't auto. wrap test when typing
 set colorcolumn=100
-highlight ColorColumn ctermbg=LightGreen
+" highlight ColorColumn ctermbg=LightGreen
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
@@ -113,8 +113,10 @@ au BufRead,BufNewFile *.md  setfiletype markdown
 " Set filetype as snippets file
 au BufRead,BufNewFile *.snippets setfiletype snippets
 
+" default text width 
 set textwidth=100
 
+" Different file types has different configs
 autocmd filetype cpp nnoremap <F4> :call SaveMakeAndRun()<CR>
 autocmd filetype js nnoremap <F4> :call SaveMakeAndRunJS()<CR>
 autocmd filetype html setlocal shiftwidth=2 tabstop=2
@@ -124,11 +126,12 @@ autocmd filetype terraform setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandt
 autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab textwidth=0
 autocmd filetype snippets setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
-
 " nmap <F10> :! python %:p <CR>
 " execute with F5
 " nmap <F5> :! source %/venv/bin/activate && python %:p && deactivate<CR>
-nmap <F5> :w!<CR>:! python %:p <CR>
+autocmd FileType python map <buffer> <F5> :w<CR>:call SaveAndRunPython()<CR>
+autocmd FileType python imap <buffer> <F5> <esc> :call SaveAndRunPython()<CR>
+" nmap <F5> :w!<CR>:! python %:p <CR>
 nmap <F6> :w!<CR>:! pytest -v -s <CR>
 nmap <F7> :!echo "Adding current file to git " && git add %<CR>
 nmap <F8> :set nonumber<CR>
@@ -145,7 +148,12 @@ au FileType python nnoremap <F9> :call SaveRunPyInNewWindow()<CR>
 
 function! SaveAndRunPython()
     " chain command with pipe
-    exec ':w! | !clear && python '.shellescape('%')
+    silent execute "update | edit"
+    " get file path of current file
+    let s:current_buffer_file_path = expand("%")
+    " add the console output
+    execute "!clear && python " . shellescape(s:current_buffer_file_path, 1)
+    " exec '!clear && python '.shellescape('%')
     redraw!
 endfunction
 
@@ -451,10 +459,10 @@ noremap <silent> <Leader>H :Entities 1<CR>
 
 
 if has('gui_running')
-    set background=dark
-    " set background=light
-    colorscheme solarized
     " colorscheme pablo
+    " set background=light
+    set background=dark
+    colorscheme solarized
 else
     " colorscheme zenburn
     " colorscheme pablo

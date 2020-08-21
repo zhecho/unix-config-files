@@ -82,7 +82,7 @@ plugins=(
     python
     direnv
     pyenv
-    virtualenv
+    #virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -139,6 +139,9 @@ alias ll="ls -lart"
 #compdef awsume
 #_arguments "*: :($(awsume-autocomplete))"
 #
+# awsume alias
+alias awsume='source awsume'
+
 
 # fortune
 fortune
@@ -147,5 +150,6 @@ fortune
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 
-
+# pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
  
