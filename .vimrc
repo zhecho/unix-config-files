@@ -1,9 +1,6 @@
 "autoload vimrc
 autocmd! bufwritepost .vimrc source %
 set encoding=utf-8
-" map f2 -redo command
-nmap <F2> :update!<CR>
-imap <F2> <C-O>:update!<CR>
 " move between tabs vim keys  тест на бг-то
 nnoremap th  :tabfirst<CR>
 nnoremap tk  :tabnext<CR>
@@ -126,12 +123,9 @@ autocmd filetype terraform setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandt
 autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab textwidth=0
 autocmd filetype snippets setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
-" nmap <F10> :! python %:p <CR>
-" execute with F5
-" nmap <F5> :! source %/venv/bin/activate && python %:p && deactivate<CR>
-autocmd FileType python map <buffer> <F5> :w<CR>:call SaveAndRunPython()<CR>
-autocmd FileType python imap <buffer> <F5> <esc> :call SaveAndRunPython()<CR>
-" nmap <F5> :w!<CR>:! python %:p <CR>
+" execute with F2
+autocmd FileType python map <buffer> <F2> :w<CR>:call SaveAndRunPython()<CR>
+autocmd FileType python imap <buffer> <F2> <esc> :call SaveAndRunPython()<CR>
 nmap <F6> :w!<CR>:! pytest -v -s <CR>
 nmap <F7> :!echo "Adding current file to git " && git add %<CR>
 nmap <F8> :set nonumber<CR>
@@ -287,6 +281,35 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsListSnippets="<c-j>"
 
 
+"""""""""""""""""
+"  Statusline   "
+"""""""""""""""""
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%{StatuslineGit()}
+set statusline+=%#LineNr#
+set statusline+=\ %f
+set statusline+=%m\
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ 
+
+
+
 """""""""""""""
 "  syntastic  "
 """""""""""""""
@@ -301,6 +324,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+
 
 " Jump to next prev error with "<" and ">"
 " NOTE: THINK OF other custom keys
@@ -477,10 +502,16 @@ endif
 """"""""""""""""""""""""""""""""""""""""""
 " au BufWrite * :Autoformat
 " https://vimawesome.com/plugin/vim-autoformat
+let g:formatterpath = ['/usr/local/bin/tflint', '/Users/$USER/.pyenv/shims/pylint']
+let g:formatdef_terraform = "tflint"
+let g:formatters_terraform = ['terraform']
 let g:formatter_yapf_style = 'google'
 " autoformat verbose
-" let g:autoformat_verbosemode=1
-let g:autoformat_verbosemode=0
+let g:autoformat_verbosemode=1
+" let g:autoformat_verbosemode=0
+let g:autoformat_autoindent = 1
+let g:autoformat_retab = 1
+let g:autoformat_remove_trailing_spaces = 1
 " \f will format selection with Autoformat
 noremap <leader>F :Autoformat<CR>
 vnoremap <leader>f :Autoformat<cr>

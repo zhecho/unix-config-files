@@ -1,4 +1,12 @@
 
+snippet module
+module "${1:module_name}" {
+  source = "${2:PATH}"
+}
+endsnippet
+
+
+
 snippet output
 output "${1:OUTPUT_VAR}" {
     value = "${${2:aws_instance.${3:INSTANCE}.$1}}"
@@ -1814,8 +1822,12 @@ resource "aws_lambda_function" "${1:lambda}" {
 endsnippet
 
 snippet r_aws_lambda_layer_version
-resource "aws_lambda_layer_version" "${1}" {
-    layer_name = "${2}"
+resource "aws_lambda_layer_version" "${1:lambda_layer}" {
+    filename   = "${2:lambda_layer_payload.zip}"
+    layer_name = "${3:lambda_layer_name}"
+    
+    compatible_runtimes = ["${4:python3.7}"]
+
 }
 endsnippet
 snippet r_aws_lambda_permission

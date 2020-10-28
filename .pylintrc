@@ -1,6 +1,8 @@
 [MESSAGES CONTROL]
 
 disable=missing-module-docstring,
+        no-value-for-parameter,
+        too-many-statements, 
         line-too-long,
         too-many-locals,
         too-many-branches,

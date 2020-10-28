@@ -12,6 +12,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="mira"
 ZSH_THEME="bira"
+# ZSH_THEME="spaceship"
+# ZSH_THEME="gnzh"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -79,9 +81,9 @@ plugins=(
     aws 
     docker
     docker-compose
+    pyenv
     python
     direnv
-    pyenv
     #virtualenv
 )
 
@@ -151,5 +153,5 @@ export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 
 # pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
+#export PATH="$HOME/.pyenv/bin:$PATH"
  
