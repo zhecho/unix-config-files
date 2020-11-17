@@ -1,1 +1,16 @@
 source ~/.vimrc
+
+" IdeaVim comments or remap it if vim is running
+" Different mapping for pycharm 
+nnoremap <leader><Space> :action CommentByLineComment<cr>
+vnoremap <leader><Space> :action CommentByLineComment<cr>
+
+" Map \r to the Reformat Code action
+map <leader>r :action ReformatCode<cr>
+"
+" Map <leader>d to start debug
+" :map <leader>d <Action>(Debug)
+"
+" Map \b to toggle the breakpoint on the current line
+:map <leader>b :action ToggleLineBreakpoint<cr>
+

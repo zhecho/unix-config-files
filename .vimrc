@@ -453,7 +453,6 @@ function! ToggleComment()
     end
 endfunction
 
-
 nnoremap <leader><Space> :call ToggleComment()<cr>
 vnoremap <leader><Space> :call ToggleComment()<cr>
 
