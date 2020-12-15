@@ -100,6 +100,10 @@ imap <F12> <C-O><F12>
 " Add a hotkey to save, compile and run C++ code
 " autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 
+
+" Set filetype as Docker file
+au BufRead,BufNewFile Dockerfile  setfiletype dockerfile
+
 " Set filetype as terraform file
 au BufRead,BufNewFile *.tf  setfiletype terraform
 
@@ -122,6 +126,7 @@ autocmd filetype yaml setlocal shiftwidth=2 tabstop=2
 autocmd filetype terraform setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab textwidth=0
 autocmd filetype snippets setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd filetype dockerfile setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
 " execute with F2
 autocmd FileType python map <buffer> <F2> :w<CR>:call SaveAndRunPython()<CR>
@@ -399,6 +404,7 @@ let s:comment_map = {
             \   "rust": '\/\/',
             \   "sh": '#',
             \   "desktop": '#',
+            \   "dockerfile": '#',
             \   "fstab": '#',
             \   "conf": '#',
             \   "profile": '#',
