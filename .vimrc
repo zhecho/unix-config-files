@@ -102,7 +102,7 @@ imap <F12> <C-O><F12>
 
 
 " Set filetype as Docker file
-au BufRead,BufNewFile Dockerfile  setfiletype dockerfile
+au BufRead,BufNewFile Dockerfile.*  setfiletype dockerfile
 
 " Set filetype as terraform file
 au BufRead,BufNewFile *.tf  setfiletype terraform
