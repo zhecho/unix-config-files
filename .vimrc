@@ -47,7 +47,7 @@ set wildmenu
 
 " Showing line numbers and length
 set nu
-" set tw=100      " whdth (used for gd)
+set tw=100      " whdth (used for gd)
 "set nowrap     " don't auto wrap on load
 "set fo-=t      " don't auto. wrap test when typing
 set colorcolumn=100
@@ -114,6 +114,7 @@ au BufRead,BufNewFile *.md  setfiletype markdown
 " Set filetype as snippets file
 au BufRead,BufNewFile *.snippets setfiletype snippets
 
+
 " default text width 
 set textwidth=100
 
@@ -124,7 +125,8 @@ autocmd filetype html setlocal shiftwidth=2 tabstop=2
 autocmd filetype yml setlocal shiftwidth=2 tabstop=2
 autocmd filetype yaml setlocal shiftwidth=2 tabstop=2
 autocmd filetype terraform setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
-autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab textwidth=0
+" autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab textwidth=0
+autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd filetype snippets setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd filetype dockerfile setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
@@ -362,7 +364,13 @@ autocmd FileType python let b:syntastic_python_pylint_post_args =
 " let @+=@a     - copy 'a' register into the clipboard
 
 " \y will copy selection to clipboard
-vnoremap <leader>y y :let @+=@"<cr>
+" vnoremap <leader>y y :let @+=@"<cr>
+
+" or just set clipboard to undamed (default system clipboard)
+set clipboard=unnamed
+
+" faster redrawing
+set ttyfast
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   Macros                                    "
@@ -461,6 +469,34 @@ endfunction
 
 nnoremap <leader><Space> :call ToggleComment()<cr>
 vnoremap <leader><Space> :call ToggleComment()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                      Toggle Nerdtree Tagbar                                      "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+function! ToggleNerdtreeTagbar()
+
+    " check if NERDTree and Tagbar are opened
+    let NERDTree_close = (bufwinnr('NERD_tree') == -1) 
+    let Tagbar_close   = (bufwinnr('__Tagbar__') == -1) 
+
+    TagbarToggle
+    NERDTreeToggle
+
+    if NERDTree_close && Tagbar_close
+        wincmd K
+        wincmd b
+        wincmd L
+        wincmd h
+        exe 'vertical resize 30'
+    endif
+
+endfunction
+" nmap <C-n> :call ToggleNerdtreeTagbar()<CR>
+
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "          Escape/Unescape & < > in the range (default current line)          "
