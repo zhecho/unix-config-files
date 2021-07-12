@@ -326,6 +326,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" mypy - enable PEP-484
+" let g:syntastic_python_checkers = ['pylint','pylama', 'python3', 'mypy']
 let g:syntastic_python_checkers = ['pylint','pylama', 'python3']
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_aggregate_errors = 1
@@ -363,10 +365,14 @@ autocmd FileType python let b:syntastic_python_pylint_post_args =
 " let @+=@a     - copy 'a' register into the clipboard
 
 " \y will copy selection to clipboard
-" vnoremap <leader>y y :let @+=@"<cr>
+vnoremap <leader>y y :let @+=@"<cr>
 
+" \p will copy current file path
+noremap <leader>p :let @+ = expand("%:p")<cr>
+
+" 
 " or just set clipboard to undamed (default system clipboard)
-set clipboard=unnamed
+" set clipboard=unnamed
 
 " faster redrawing
 set ttyfast

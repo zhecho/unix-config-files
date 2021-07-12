@@ -23,6 +23,8 @@
     spull = svn rebase
     spush = svn dcommit
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+    # cm  = !git commit --message=${git branch | grep \\* | cut -d ' ' -f 2 }; | git commit -F - $myarg \\n;  }; f
+    cm  = !msg="[$(git rev-parse --abbrev-ref HEAD)]" &&  git commit --message=$msg 
 [diff]
     submodule = log
 
