@@ -500,7 +500,8 @@ function! ToggleNerdtreeTagbar()
 endfunction
 " nmap <C-n> :call ToggleNerdtreeTagbar()<CR>
 
-
+" show dot files
+let NERDTreeShowHidden=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

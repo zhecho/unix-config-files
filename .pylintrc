@@ -15,7 +15,8 @@ disable=missing-module-docstring,
         import-error,
         E1101,
         W,
-        R0801
+        R0801,
+        inconsistent-return-statements
 
 [SIMILARITIES]
 
