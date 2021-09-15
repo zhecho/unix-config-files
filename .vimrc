@@ -63,7 +63,6 @@ Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-
 " syntastic or vim-flake8
 " NOTE: pip install pylint flake8 .. or just read :help syntastic-checkers
 Plug 'vim-syntastic/syntastic'
@@ -84,7 +83,17 @@ Plug 'editorconfig/editorconfig-vim'
 
 
 " NerdTree
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
+" Plug 'https://github.com/preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+
+
+" Surround with " or other [({...  with the keys
+" ysw\" -  will suround word with ""
+" cs"[ - will change souroundsing "" with []
+" yss) - will sourround entire line with ()
+" yss{ - will sourround entire line with {}
+Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
+
 call plug#end()
 
 "
