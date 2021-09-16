@@ -129,10 +129,10 @@ if has('gui_running')
 else
   " colorscheme zenburn
   " colorscheme pablo
-  " colorscheme pablo
-  set background=light
-  " set background=dark
-  colorscheme solarized
+  colorscheme pablo
+  " set background=light
+  set background=dark
+  " colorscheme solarized
 endif
 
 " highlight spell check with underlines
