@@ -510,33 +510,33 @@ vnoremap <leader><Space> :call ToggleComment()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-function! ToggleNerdtreeTagbar()
-
+" function! ToggleNerdtreeTagbar()
+" 
     " check if NERDTree and Tagbar are opened
-    let NERDTree_close = (bufwinnr('NERD_tree') == -1) 
-    let Tagbar_close   = (bufwinnr('__Tagbar__') == -1) 
-
-    TagbarToggle
-    NERDTreeToggle
-
-    if NERDTree_close && Tagbar_close
-        wincmd K
-        wincmd b
-        wincmd L
-        wincmd h
-        exe 'vertical resize 30'
-    endif
-
-endfunction
+    " let NERDTree_close = (bufwinnr('NERD_tree') == -1) 
+    " let Tagbar_close   = (bufwinnr('__Tagbar__') == -1) 
+" 
+    " TagbarToggle
+    " NERDTreeToggle
+" 
+    " if NERDTree_close && Tagbar_close
+        " wincmd K
+        " wincmd b
+        " wincmd L
+        " wincmd h
+        " exe 'vertical resize 30'
+    " endif
+" 
+" endfunction
 " nmap <C-n> :call ToggleNerdtreeTagbar()<CR>
 
 " show dot files
 let NERDTreeShowHidden=1
 
-
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-
+" Mirror the NERDTree before showing it. This makes it the same on all tabs.
+nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTret() | quit | endif
 " Close the tab if NERDTree is the only window remaining in it.
