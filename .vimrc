@@ -85,7 +85,10 @@ Plug 'editorconfig/editorconfig-vim'
 " NerdTree
 " Plug 'preservim/nerdtree'
 " Plug 'https://github.com/preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'https://github.com/preservim/nerdtree'
 
+" Markdown
+Plug 'https://github.com/tpope/vim-markdown'
 
 " Surround with " or other [({...  with the keys
 " ysw\" -  will suround word with ""
@@ -93,6 +96,9 @@ Plug 'editorconfig/editorconfig-vim'
 " yss) - will sourround entire line with ()
 " yss{ - will sourround entire line with {}
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
+
+" Go plugin
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -106,39 +112,54 @@ hi clear SpellBad
 hi SpellBad cterm=underline
 
 imap <F12> <C-O><F12>
-" Add a hotkey to save, compile and run C++ code
-" autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
-
-
-" Set filetype as Docker file
-au BufRead,BufNewFile Dockerfile.*  setfiletype dockerfile
-
-" Set filetype as terraform file
-au BufRead,BufNewFile *.tf  setfiletype terraform
-
-" Set filetype as markup file
-au BufRead,BufNewFile *.md  setfiletype markdown
-
-
-" Set filetype as snippets file
-au BufRead,BufNewFile *.snippets setfiletype snippets
-
-
 " default text width 
 set textwidth=100
 
+" Only enable autocommands when Vim supports them
+" if has("autocmd")
+
+" Add a hotkey to save, compile and run C++ code
+" autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+" Set filetype as Docker file
+au BufRead,BufNewFile Dockerfile.*  setfiletype dockerfile
+" Set filetype as terraform file
+au BufRead,BufNewFile *.tf  setfiletype terraform
+" Set filetype as markup file
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+au BufRead,BufNewFile,BufFilePre *.md set filetype=markdown.pandoc
+" Set filetype as snippets file
+au BufRead,BufNewFile *.snippets setfiletype snippets
 " Different file types has different configs
-autocmd filetype cpp nnoremap <F4> :call SaveMakeAndRun()<CR>
-autocmd filetype js nnoremap <F4> :call SaveMakeAndRunJS()<CR>
 autocmd filetype html setlocal shiftwidth=2 tabstop=2
 autocmd filetype yml setlocal shiftwidth=2 tabstop=2
 autocmd filetype yaml setlocal shiftwidth=2 tabstop=2
 autocmd filetype terraform setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
-" autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab textwidth=0
 autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd filetype snippets setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd filetype dockerfile setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+""
+" Markdown Configuration
+""
+" Spellcheck in British English
+autocmd FileType markdown setlocal spell spelllang=en_gb
+" Automatically open Goyo
+" autocmd FileType markdown Goyo
+" Hide plaintext formatting and use color instead
+autocmd FileType markdown set conceallevel=3
+" Disable cursor line and column highlight
+" autocmd FileType markdown set nocursorline
+" autocmd FileType markdown set nocursorcolumn
+" enable fenced code block syntax highlighting in your markdown documents
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+" Syntax highlight is synchronized in 50 lines. It may cause collapsed highlighting at large
+" fenced code block
+let g:markdown_minlines = 100
 
+" endif
+
+" execute with F4
+autocmd filetype cpp nnoremap <F4> :call SaveMakeAndRun()<CR>
+autocmd filetype js nnoremap <F4> :call SaveMakeAndRunJS()<CR>
 " execute with F2
 autocmd FileType python map <buffer> <F2> :w<CR>:call SaveAndRunPython()<CR>
 autocmd FileType python imap <buffer> <F2> <esc> :call SaveAndRunPython()<CR>
@@ -511,6 +532,9 @@ endfunction
 
 " show dot files
 let NERDTreeShowHidden=1
+
+" Mirror the NERDTree before showing it. This makes it the same on all tabs.
+nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
