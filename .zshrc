@@ -163,5 +163,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 # networksetup -listallnetworkservices
 # disable ipv6 services for iPhone USB
 # networksetup -setv6off "iPhone USB"
-
+# enable v6 for particular service
+# networksetup -setv6automatic Wi-Fi
+#
 
