@@ -166,4 +166,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 # enable v6 for particular service
 # networksetup -setv6automatic Wi-Fi
 #
+#
+# autocomplate for kubectl
+source <(kubectl completion zsh)
 
