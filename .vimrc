@@ -38,6 +38,9 @@ set incsearch
 set ignorecase
 set smartcase
 
+" print font
+set printfont=Courier_New:h10:cEASTEUROPE
+
 " https://www.youtube.com/watch?v=XA2WjJbmmoM
 " Vim wihout plugins
 " Search down into the folders
@@ -52,6 +55,12 @@ set tw=100      " whdth (used for gd)
 "set fo-=t      " don't auto. wrap test when typing
 set colorcolumn=100
 " highlight ColorColumn ctermbg=LightGreen
+
+
+
+" Install Plug with
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
