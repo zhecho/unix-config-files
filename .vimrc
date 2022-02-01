@@ -140,8 +140,8 @@ au BufRead,BufNewFile,BufFilePre *.md set filetype=markdown.pandoc
 au BufRead,BufNewFile *.snippets setfiletype snippets
 " Different file types has different configs
 autocmd filetype html setlocal shiftwidth=2 tabstop=2
-autocmd filetype yml setlocal shiftwidth=2 tabstop=2
-autocmd filetype yaml setlocal shiftwidth=2 tabstop=2
+autocmd filetype yml setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd filetype yaml setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd filetype terraform setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd filetype snippets setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
