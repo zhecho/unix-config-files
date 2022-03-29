@@ -63,7 +63,7 @@ set colorcolumn=100
 "     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
@@ -71,6 +71,9 @@ Plug 'altercation/vim-colors-solarized', { 'set': 'all' }
 
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" neovim completion manager
+" Plug 'roxma/nvim-completion-manager'
 
 " syntastic or vim-flake8
 " NOTE: pip install pylint flake8 .. or just read :help syntastic-checkers
@@ -85,7 +88,7 @@ Plug 'juliosueiras/vim-terraform-completion'
 " vim-autoformat https://vimawesome.com/plugin/vim-autoformat
 Plug 'Chiel92/vim-autoformat'
 
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
 " editconfig
 Plug 'editorconfig/editorconfig-vim'
@@ -112,6 +115,12 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Copilot
 " https://github.com/github/copilot.vim#getting-started
 Plug 'github/copilot.vim'
+
+" https://www.linode.com/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/
+Plug 'brooth/far.vim'
+
+" fzf
+" Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -358,6 +367,8 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ 
 
+
+let g:python3_host_prog = 'python3'
 
 
 """""""""""""""
