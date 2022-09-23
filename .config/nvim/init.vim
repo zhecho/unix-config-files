@@ -88,7 +88,7 @@ Plug 'juliosueiras/vim-terraform-completion'
 " vim-autoformat https://vimawesome.com/plugin/vim-autoformat
 Plug 'Chiel92/vim-autoformat'
 
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " editconfig
 Plug 'editorconfig/editorconfig-vim'
@@ -114,13 +114,20 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Copilot
 " https://github.com/github/copilot.vim#getting-started
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 " https://www.linode.com/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/
 Plug 'brooth/far.vim'
 
 " fzf
 " Plug 'junegunn/fzf.vim'
+
+" TypeScript and JS
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
+
 
 call plug#end()
 

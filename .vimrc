@@ -93,14 +93,16 @@ Plug 'editorconfig/editorconfig-vim'
 " NerdTree
 " Plug 'preservim/nerdtree'
 " Plug 'https://github.com/preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'https://github.com/preservim/nerdtree'
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
 
 " Markdown
 Plug 'https://github.com/tpope/vim-markdown'
 
 " Surround with " or other [({...  with the keys
-" ysw\" -  will suround word with ""
-" cs"[ - will change souroundsing "" with []
+" ysw" -  will suround word with " "
+" cs"[ - will change souroundsing " " with []
 " yss) - will sourround entire line with ()
 " yss{ - will sourround entire line with {}
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
@@ -108,12 +110,21 @@ Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 " Go plugin
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-
 " Copilot
 " https://github.com/github/copilot.vim#getting-started
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
+
+" TypeScript and JS
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 
 call plug#end()
+
+" set copilot special node version
+ 
+" let g:copilot_node_command = "~/.nodenv/versions/17.9.1/bin/node"
 
 "
 " " If you want :UltiSnipsEdit to split your window.
@@ -143,7 +154,22 @@ au BufRead,BufNewFile,BufFilePre *.md set filetype=markdown.pandoc
 " Set filetype as snippets file
 au BufRead,BufNewFile *.snippets setfiletype snippets
 " Different file types has different configs
+
+" Set filetype as html file
+au BufRead,BufNewFile *.html setf html
+
+" Set htmpl as filetype as html (html  template file)
+au BufRead,BufNewFile *.htmpl setf html
+
+" gohtmltmpl go html template files
+au BufRead,BufNewFile *.tmpl setf gohtmltmpl
+
+" javascriptreact files
+au BufRead,BufNewFile *.jsx setf javascriptreact
+
 autocmd filetype html setlocal shiftwidth=2 tabstop=2
+autocmd filetype javascriptreact setlocal shiftwidth=2 tabstop=2
+autocmd filetype htmpl setlocal shiftwidth=2 tabstop=2
 autocmd filetype yml setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd filetype yaml setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd filetype terraform setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
@@ -176,6 +202,10 @@ autocmd filetype js nnoremap <F4> :call SaveMakeAndRunJS()<CR>
 " execute with F2
 autocmd FileType python map <buffer> <F2> :w<CR>:call SaveAndRunPython()<CR>
 autocmd FileType python imap <buffer> <F2> <esc> :call SaveAndRunPython()<CR>
+" build go program with F2
+autocmd FileType go map <buffer> <F2> :w<CR>:call SaveAndRunGoLang()<CR>
+autocmd FileType go imap <buffer> <F2> <esc> :call SaveAndRunGoLang()<CR>
+
 nmap <F6> :w!<CR>:! pytest -v -s <CR>
 nmap <F7> :!echo "Adding current file to git " && git add %<CR>
 nmap <F8> :set nonumber<CR>
@@ -200,6 +230,18 @@ function! SaveAndRunPython()
     " exec '!clear && python '.shellescape('%')
     redraw!
 endfunction
+
+function! SaveAndRunGoLang()
+    " chain command with pipe
+    silent execute "update | edit"
+    " get file path of current file
+    let s:current_buffer_file_path = expand("%")
+    " add the console output
+    execute "!clear && go run" . shellescape(s:current_buffer_file_path, 1)
+    " exec '!clear && python '.shellescape('%')
+    redraw!
+endfunction
+
 
 function! SaveRunPyInNewWindow()
     " SOURCE [reusable window]: https://github.com/fatih/vim-go/blob/master/autoload/go/ui.vim
@@ -480,13 +522,16 @@ let s:comment_map = {
             \   "ahk": ';',
             \   "vim": '"',
             \   "htmldjango": {"start_comment": '{#', "end_comment": '#}'},
+            \   "javascriptreact": {"start_comment": '{#', "end_comment": '#}'},
             \   "html": {"start_comment": '<!--', "end_comment": '-->'},
+            \   "gohtmltmpl": {"start_comment": '<!--', "end_comment": '-->'},
+            \   "htmpl": {"start_comment": '<!--', "end_comment": '-->'},
             \   "css": {"start_comment": '\/\*', "end_comment": '\*\/'},
             \ }
 
 function! ToggleComment()
     if has_key(s:comment_map, &filetype)
-        if &filetype == 'htmldjango' || &filetype == 'html'|| &filetype == 'css'
+        if &filetype == 'htmldjango' || &filetype == 'html'|| &filetype == 'css' || &filetype == 'htmpl' || &filetype == 'gohtmltmpl' || &filetype == 'javascriptreact'
             let comment_leader = s:comment_map[&filetype]["start_comment"]
             let comment_end = s:comment_map[&filetype]["end_comment"]
             if getline('.') =~ "^\\s*".comment_leader."\\(.*\\)".comment_end.""
@@ -618,4 +663,5 @@ let g:autoformat_remove_trailing_spaces = 1
 noremap <leader>F :Autoformat<CR>
 vnoremap <leader>f :Autoformat<cr>
 
-
+" vim-jsx plugin config
+let g:vim_jsx_pretty_colorful_config = 1 " default 0

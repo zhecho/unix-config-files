@@ -168,7 +168,8 @@ export PATH=$GEM_HOME/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-
+# nodenv
+eval "$(nodenv init -)"
 # Check all enabled network services
 # networksetup -listallnetworkservices
 # disable ipv6 services for iPhone USB
@@ -177,6 +178,9 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 # networksetup -setv6automatic Wi-Fi
 #
 #
+
+# Manual fix to v1.22 REMOVE after upgrade to >= 1.25
+export PATH="/usr/local/opt/kubernetes-cli@1.22/bin:$PATH"
 # autocomplate for kubectl
 source <(kubectl completion zsh)
 
@@ -187,4 +191,7 @@ source <(kubectl completion zsh)
 # autocmpletion helm
 source ~/.zsh_helm_autocompletion.sh
 
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
