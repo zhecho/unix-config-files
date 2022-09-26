@@ -195,3 +195,7 @@ source ~/.zsh_helm_autocompletion.sh
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+
+# nvim/vim config values for python
+export PYTHON_CONFIGURE_OPTS="--enable-framework"
+

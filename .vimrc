@@ -115,12 +115,16 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'github/copilot.vim'
 
 " TypeScript and JS
-Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
-Plug 'jparise/vim-graphql'        " GraphQL syntax
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 call plug#end()
+
+
 
 " set copilot special node version
  
@@ -219,6 +223,10 @@ au FileType python map <silent> <leader>v ofrom IPython import embed; embed()<es
 " save and run python code by pressing F10 key
 au FileType python nnoremap <F10> :call SaveAndRunPython()<CR>
 au FileType python nnoremap <F9> :call SaveRunPyInNewWindow()<CR>
+
+" sync syntax highlight 
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 function! SaveAndRunPython()
     " chain command with pipe
