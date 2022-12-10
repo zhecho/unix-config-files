@@ -199,3 +199,9 @@ source ~/.zsh_helm_autocompletion.sh
 # nvim/vim config values for python
 export PYTHON_CONFIGURE_OPTS="--enable-framework"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/zen0/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zen0/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/zen0/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zen0/google-cloud-sdk/completion.zsh.inc'; fi

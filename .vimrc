@@ -80,7 +80,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'hashivim/vim-terraform'
 
 " https://github.com/juliosueiras/vim-terraform-completion#vim-terraform-completion-with-linter---demosdemomd
-Plug 'juliosueiras/vim-terraform-completion'
+" Plug 'juliosueiras/vim-terraform-completion'
 
 " vim-autoformat https://vimawesome.com/plugin/vim-autoformat
 Plug 'Chiel92/vim-autoformat'
@@ -93,9 +93,11 @@ Plug 'editorconfig/editorconfig-vim'
 " NerdTree
 " Plug 'preservim/nerdtree'
 " Plug 'https://github.com/preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-            \ Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+" Plug 'preservim/nerdtree' |
+            " \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            " \ Plug 'ryanoasis/vim-devicons'
 
 " Markdown
 Plug 'https://github.com/tpope/vim-markdown'
@@ -177,18 +179,18 @@ autocmd filetype htmpl setlocal shiftwidth=2 tabstop=2
 autocmd filetype yml setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd filetype yaml setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd filetype terraform setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
-autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd filetype markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab spell spelllang=en_gb conceallevel=3
 autocmd filetype snippets setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd filetype dockerfile setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 ""
 " Markdown Configuration
 ""
 " Spellcheck in British English
-autocmd FileType markdown setlocal spell spelllang=en_gb
+" autocmd FileType markdown setlocal spell spelllang=en_gb
 " Automatically open Goyo
 " autocmd FileType markdown Goyo
 " Hide plaintext formatting and use color instead
-autocmd FileType markdown set conceallevel=3
+" autocmd FileType markdown set conceallevel=3
 " Disable cursor line and column highlight
 " autocmd FileType markdown set nocursorline
 " autocmd FileType markdown set nocursorcolumn
@@ -598,18 +600,21 @@ vnoremap <leader><Space> :call ToggleComment()<cr>
 " 
 " endfunction
 " nmap <C-n> :call ToggleNerdtreeTagbar()<CR>
-
+" 
 " show dot files
 let NERDTreeShowHidden=1
 
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
 " Mirror the NERDTree before showing it. This makes it the same on all tabs.
 nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
+
 " Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTret() | quit | endif
+autocmd BufWinEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTret() | quit | endif
+
 " Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufWinEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
