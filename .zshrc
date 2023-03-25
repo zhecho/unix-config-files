@@ -205,3 +205,6 @@ if [ -f '/Users/zen0/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zen0/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/zen0/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zen0/google-cloud-sdk/completion.zsh.inc'; fi
+
+source /Users/zen0/.docker/init-zsh.sh || true # Added by Docker Desktop
+
