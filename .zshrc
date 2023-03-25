@@ -93,8 +93,8 @@ plugins=(
     docker-compose
     pyenv
     python
-    direnv
-    #virtualenv
+    # direnv
+    # virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -156,7 +156,7 @@ alias awsume='source awsume'
 
 
 # fortune
-fortune
+# fortune
 
 # gem
 export GEM_HOME=$HOME/.gem
@@ -169,7 +169,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
 # nodenv
-eval "$(nodenv init -)"
+#eval "$(nodenv init -)"
 # Check all enabled network services
 # networksetup -listallnetworkservices
 # disable ipv6 services for iPhone USB
