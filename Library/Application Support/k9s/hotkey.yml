@@ -18,4 +18,3 @@ hotKey:
     shortCut:    Shift-2
     description: XRay Deployments
     command:     xray deploy
-

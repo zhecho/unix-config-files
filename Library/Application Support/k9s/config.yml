@@ -30,7 +30,7 @@ k9s:
         - argocd
         - default
       view:
-        active: deploy
+        active: pods
       featureGates:
         nodeShell: false
       shellPod:
