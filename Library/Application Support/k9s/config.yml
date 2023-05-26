@@ -19,18 +19,45 @@ k9s:
   currentContext: arn:aws:eks:eu-west-1:822793012260:cluster/swo-cln-1-mgmt-k8s-cluster
   currentCluster: arn:aws:eks:eu-west-1:822793012260:cluster/swo-cln-1-mgmt-k8s-cluster
   clusters:
+    arn:aws:eks:eu-west-1:151553144567:cluster/swo-cbe-k8s-cluster:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - argocd
+        - billing-engine
+        - all
+        - default
+      view:
+        active: kialis.kiali.io
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
     arn:aws:eks:eu-west-1:822793012260:cluster/swo-cln-1-mgmt-k8s-cluster:
       namespace:
         active: all
         lockFavorites: false
         favorites:
+        - metrics-server
+        - external-secrets
+        - cluster-autoscaler
+        - crossplane
         - all
         - external-dns
         - alb
         - argocd
         - default
       view:
-        active: pods
+        active: rolepolicyattachments.iam.aws.upbound.io
       featureGates:
         nodeShell: false
       shellPod:

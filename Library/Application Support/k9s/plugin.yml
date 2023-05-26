@@ -10,7 +10,6 @@ plugin:
     args:
     - -c
     - "watch -n 5 kubectl get events --context $CONTEXT --namespace $NAMESPACE --field-selector involvedObject.name=$NAME"
-
   get-crossplane:
     shortCut: Shift-4
     confirm: false

@@ -135,7 +135,7 @@ export SHOW_AWS_PROMPT="true"
 # alias assume-role='function(){eval $(command assume-role $@);}'
 
 # ipython in vi mode
-alias vpython='ipython --TerminalInteractiveShell.editing_mode=vi'
+alias vpython='ipython3 --TerminalInteractiveShell.editing_mode=vi'
 
 export AWS_VAULT_KEYCHAIN_NAME=aws-vault
 export AWS_VAULT_PROMPT=osascript

@@ -94,10 +94,10 @@ Plug 'editorconfig/editorconfig-vim'
 " Plug 'preservim/nerdtree'
 " Plug 'https://github.com/preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-" Plug 'preservim/nerdtree' |
-            " \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-            " \ Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
 
 " Markdown
 Plug 'https://github.com/tpope/vim-markdown'
