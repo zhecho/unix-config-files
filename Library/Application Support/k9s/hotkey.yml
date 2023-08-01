@@ -1,6 +1,5 @@
 # $XDG_CONFIG_HOME/k9s/hotkey.yml
 hotKey:
-
   # Hitting Shift-0 navigates to your pod view
   shift-0:
     shortCut:    Shift-0
@@ -18,3 +17,21 @@ hotKey:
     shortCut:    Shift-2
     description: XRay Deployments
     command:     xray deploy
+  # Hitting Shift-3 navigates to your ArgoCD applications
+  # "aa" is defined in alias.yml
+  shift-3:
+    shortCut:    Shift-3
+    description: ArgoCD Apps
+    command:     aa
+  # Hitting Shift-4 navigates to Events
+  # "ev" is defined in alias.yml
+  shift-4:
+    shortCut:    Shift-4
+    description: Events
+    command:     ev
+  # Hitting Shift-5 upbound/crossplane CRDs
+  # "crds" is defined in alias.yml
+  shift-5:
+    shortCut:    Shift-5
+    description: CRDs
+    command:     crds

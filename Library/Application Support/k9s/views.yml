@@ -1,0 +1,28 @@
+apiVersion: k9s.io/v1alpha1
+kind: Views
+layout: default
+title: My K9s
+bind:
+  cluster: dev
+  namespace: default
+  context: my-context
+views:
+- name: pods
+  title: Pods
+  commands:
+    - k
+  info:
+    - default
+    - logs
+  filters:
+    - default
+    - by-label
+  namespace:
+    - default
+    - kube-system
+  container:
+    - default
+  sort:
+    column: AGE
+    asc: true
+
