@@ -32,3 +32,5 @@
 	defaultBranch = master
 [push]
 	default = current
+[credential]
+	helper = osxkeychain

@@ -1,0 +1,73 @@
+################################################################################
+# Notes for configuring nvim 
+################################################################################
+# Using NvChad
+# Link:https://www.youtube.com/watch?v=Mtgo-nP_r8Y
+
+# Leader key
+spsace = <space> 
+
+# Themes
+<leader> + t + h - change themes
+
+# syntax highlighting 
+:TSInstallInfo     --> check which syntax highlighting is installed
+:TSInstall elexir  --> install it for elexir
+
+# File Tree via package nvim-tree
+ctrl + n    - enable it
+m           - mark a File
+a           - create a file 
+c           - copy file
+p           - paste file
+r           - rename file
+
+
+# File Navigation
+<leader> + f + f  - find files
+<leader> + f + b  - find in opened buffers
+
+# Cheet Sheet
+<leader> + c + h  - open Cheet sheet
+
+
+# Navigation keys
+ctrl + h/j/k/l
+
+# Split
+:vsp  - vertical split
+:sp   - split
+
+
+# tabbufline buffer plugin
+<tab>           - cycle trough tabbufline
+<tab> + <shift> - cycle in reverse
+<leader> + x    - close current buffer
+
+# Terminal
+<leader> + h    -  open terminal in horizontal window
+<leader> + v    -  open terminal in vertical window
+
+
+# Custom configuration located in 
+# ~/.config/nvim/lua/custom/chadrc.lua - used for overwriting default nvchad config
+# and 
+# ~/.config/nvim/lua/custom/init.lua   - used for overwriting neovim options and commands
+
+# Lazy operations
+:Lazy sync    - sync and install plugins 
+
+# language server protocol (lsp)
+# Documentation -> github.com/neovim/nvim-lspconfig/doc/server_configurations.md
+:help lspconfig-all
+
+
+# rust_analyzer
+# link: https://github.com/rust-analyzer/rust-analyzer
+
+
+
+# ChatGPT
+# Link: https://www.youtube.com/watch?v=7k0KZsheLP4
+
+

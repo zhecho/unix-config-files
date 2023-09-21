@@ -16,8 +16,8 @@ k9s:
     fullScreenLogs: false
     textWrap: true
     showTime: false
-  currentContext: arn:aws:eks:eu-west-1:822793012260:cluster/cln-green-mgmt-k8s-cluster
-  currentCluster: arn:aws:eks:eu-west-1:822793012260:cluster/cln-green-mgmt-k8s-cluster
+  currentContext: docker-desktop
+  currentCluster: docker-desktop
   clusters:
     arn:aws:eks:eu-west-1:822793012260:cluster/cln-blue-mgmt-k8s-cluster:
       namespace:
@@ -46,12 +46,35 @@ k9s:
         active: all
         lockFavorites: false
         favorites:
-        - external-secrets
+        - alb
         - argocd
+        - external-secrets
         - all
         - default
       view:
-        active: secrets
+        active: ingress
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    docker-desktop:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - ingress-nginx
+        - all
+        - default
+      view:
+        active: ingress
       featureGates:
         nodeShell: false
       shellPod:
