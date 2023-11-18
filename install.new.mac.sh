@@ -2,7 +2,24 @@
 #
 # MacOS reinstall script
 #
+# Check if a hostname argument is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 new_hostname"
+    exit 1
+fi
 
+# Assign the first argument to a variable
+NEW_HOSTNAME="$1"
+
+# Change HostName, LocalHostName, and ComputerName
+echo "Changing HostName, LocalHostName, and ComputerName to '$NEW_HOSTNAME'..."
+
+sudo scutil --set HostName "$NEW_HOSTNAME"
+sudo scutil --set LocalHostName "$NEW_HOSTNAME"
+sudo scutil --set ComputerName "$NEW_HOSTNAME"
+
+echo "Hostname change complete."
+echo "Installing software..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
 brew install clipy && \
 brew install wget && \
