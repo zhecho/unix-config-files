@@ -9,6 +9,8 @@ g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
 
 -------------------------------------- options ------------------------------------------
+opt.encoding = 'utf-8'
+opt.fileencoding = 'utf-8'
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
@@ -113,3 +115,4 @@ local new_cmd = vim.api.nvim_create_user_command
 new_cmd("NvChadUpdate", function()
   require "nvchad.updater"()
 end, {})
+
