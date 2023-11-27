@@ -30,9 +30,10 @@ brew install --cask wireshark wireshark-chmodbpf && \
 brew install --cask docker && \
 brew install telegram && \
 brew install skaffold helm kubecm tree minikube mtr powerlevel10k && \
-brew install vlc sipcalc
-brew tap hashicorp/tap
-brew install hashicorp/tap/hashicorp-vagrant
+brew install vlc sipcalc && \
+brew tap hashicorp/tap && \
+brew install hashicorp/tap/hashicorp-vagrant && \
+brew install quemu && \
 brew install --cask virtualbox
 
 # Installing Fonts https://github.com/romkatv/powerlevel10k/blob/master/font.md
