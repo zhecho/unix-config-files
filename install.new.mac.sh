@@ -24,7 +24,7 @@ echo "Installing software..."
 brew install clipy && \
 brew install wget && \
 brew install keepassxc && \
-brew install btop k9s kubectl wireshark tmux nvim tcpdump terraform && \
+brew install awscli btop k9s kubectl wireshark tmux nvim tcpdump terraform && \
 brew install --cask firefox && \
 brew install --cask wireshark wireshark-chmodbpf && \
 brew install --cask docker && \
@@ -53,4 +53,11 @@ for url in "${font_urls[@]}"; do
 done
 
 mv "${font_dir}/MesloLGS*" "$HOME/Library/Fonts/."
+
+
+# installing ohmyzsh if you want
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+
+
 
