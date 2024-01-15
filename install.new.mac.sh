@@ -24,11 +24,11 @@ echo "Installing software..."
 brew install clipy && \
 brew install wget && \
 brew install keepassxc && \
-brew install awsume awscli btop k9s kubectl wireshark tmux nvim tcpdump terraform && \
+brew install awsume awscli btop k9s kubectl wireshark tmux nvim tcpdump mtr terraform ansible && \
 brew install --cask firefox && \
-brew install --cask wireshark wireshark-chmodbpf && \
+brew install --cask wireshark wireshark-chmodbpf minicom && \
 brew install --cask docker osxfuse ext4fuse && \
-brew install telegram && \
+brew install telegram signal && \
 brew install skaffold helm kubecm tree minikube mtr powerlevel10k && \
 brew install vlc sipcalc && \
 brew tap hashicorp/tap && \
