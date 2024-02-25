@@ -22,7 +22,7 @@ echo "Hostname change complete."
 echo "Installing software..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
 brew install clipy && \
-brew install wget && \
+brew install wget bash coreutils git && \
 brew install keepassxc && \
 brew install awsume awscli btop k9s kubectl wireshark tmux nvim tcpdump mtr terraform ansible && \
 brew install --cask firefox && \
