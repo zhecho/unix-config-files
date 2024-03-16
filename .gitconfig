@@ -34,3 +34,5 @@
 	default = current
 [credential]
 	helper = osxkeychain
+[safe]
+	directory = /Users/zen0/prj/home-k3s-cluster/armbian/build
