@@ -26,7 +26,7 @@ brew install wget bash coreutils git && \
 brew install keepassxc && \
 brew install awsume awscli btop k9s kubectl wireshark tmux nvim tcpdump mtr opentofu terraform terraform-lsp terraform-ls ansible && \
 brew install --cask firefox && \
-brew install --cask wireshark wireshark-chmodbpf minicom && \
+brew install --cask wireshark wireshark-chmodbpf minicom visual-studio-code && \
 brew install --cask docker osxfuse ext4fuse && \
 brew install telegram signal && \
 brew install skaffold helm kubecm tree minikube mtr powerlevel10k && \
