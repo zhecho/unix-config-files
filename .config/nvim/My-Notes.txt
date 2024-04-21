@@ -70,4 +70,9 @@ ctrl + h/j/k/l
 # ChatGPT
 # Link: https://www.youtube.com/watch?v=7k0KZsheLP4
 
+# gp.nvim - chat gpt plugin
+# Link: https://github.com/Robitx/gp.nvim/blob/main/README.md
+
+
+
 

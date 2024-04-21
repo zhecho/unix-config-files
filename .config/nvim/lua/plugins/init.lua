@@ -262,6 +262,23 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
+
+
+  -- gp.nvim https://www.youtube.com/watch?v=X-cT7s47PLo
+  -- https://github.com/Robitx/gp.nvim/blob/main/README.md
+  -- lazy.nvim
+  {
+  	"robitx/gp.nvim",
+  	config = function()
+  		-- require("gp").setup()
+      require('custom.plugins.configs.gp').setup()
+      print("Loading plugins/init.lua")
+  		-- or setup with your own config (see Install > Configuration in Readme)
+  		-- require("gp").setup(config)
+          	-- shortcuts might be setup here (see Usage > Shortcuts in Readme)
+  	end,
+  }
+
 }
 
 local config = require("core.utils").load_config()

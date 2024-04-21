@@ -24,7 +24,7 @@ echo "Installing software..."
 brew install clipy && \
 brew install wget bash coreutils git && \
 brew install keepassxc && \
-brew install awsume awscli btop k9s kubectl wireshark tmux nvim tcpdump mtr opentofu terraform terraform-lsp terraform-ls ansible && \
+brew install awsume awscli btop k9s kubectl termshark wireguard-tools tmux nvim tcpdump mtr opentofu terraform terraform-lsp terraform-ls ansible && \
 brew install --cask firefox && \
 brew install --cask wireshark wireshark-chmodbpf minicom visual-studio-code && \
 brew install --cask docker osxfuse ext4fuse && \
@@ -34,6 +34,7 @@ brew install vlc sipcalc && \
 brew tap hashicorp/tap && \
 brew install hashicorp/tap/hashicorp-vagrant && \
 brew install quemu && \
+brew install podman && \
 brew install --cask virtualbox
 
 # Installing Fonts https://github.com/romkatv/powerlevel10k/blob/master/font.md
