@@ -21,7 +21,7 @@ sudo scutil --set ComputerName "$NEW_HOSTNAME"
 echo "Hostname change complete."
 echo "Installing software..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
-brew install clipy && \
+brew install clipy iterm2 && \
 brew install wget bash coreutils git && \
 brew install keepassxc && \
 brew install awsume awscli btop k9s kubectl termshark wireguard-tools tmux nvim tcpdump mtr opentofu terraform terraform-lsp terraform-ls ansible && \
