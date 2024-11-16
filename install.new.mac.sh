@@ -35,6 +35,7 @@ brew tap hashicorp/tap && \
 brew install hashicorp/tap/hashicorp-vagrant && \
 brew install quemu && \
 brew install podman && \
+brew install telegram signal viber && \
 brew install --cask virtualbox
 
 # Installing Fonts https://github.com/romkatv/powerlevel10k/blob/master/font.md
