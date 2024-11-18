@@ -24,7 +24,7 @@ echo "Installing software..."
 brew install clipy iterm2 && \
 brew install wget bash coreutils git && \
 brew install keepassxc && \
-brew install awsume awscli btop k9s kubectl termshark wireguard-tools tmux nvim tcpdump mtr opentofu terraform terraform-lsp terraform-ls ansible && \
+brew install awsume python-setuptools awscli btop k9s kubectl termshark wireguard-tools tmux nvim tcpdump mtr opentofu terraform terraform-lsp terraform-ls ansible && \
 brew install --cask firefox && \
 brew install --cask wireshark wireshark-chmodbpf minicom visual-studio-code && \
 brew install --cask docker osxfuse ext4fuse && \
