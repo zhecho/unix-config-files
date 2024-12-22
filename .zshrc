@@ -22,7 +22,12 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="gnzh"
 
 # ZSH_THEME="bira"
+
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
+autoload -Uz compinit
+compinit
 
 
 # Set list of themes to pick from when loading at random
@@ -98,7 +103,7 @@ plugins=(
     # virtualenv
 )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -169,29 +174,17 @@ export PATH=$GEM_HOME/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-# nodenv
-#eval "$(nodenv init -)"
-# Check all enabled network services
-# networksetup -listallnetworkservices
-# disable ipv6 services for iPhone USB
-# networksetup -setv6off "iPhone USB"
-# enable v6 for particular service
-# networksetup -setv6automatic Wi-Fi
-#
-#
-
 # Manual fix to v1.22 REMOVE after upgrade to >= 1.25
-export PATH="/usr/local/opt/kubernetes-cli@1.22/bin:$PATH"
+# export PATH="/usr/local/opt/kubernetes-cli@1.22/bin:$PATH"
 # autocomplate for kubectl
 source <(kubectl completion zsh)
 
+# k9s 
+export KUBE_CONFIG_PATH=~/.kube/config
+
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-# autocmpletion helm
-source ~/.zsh_helm_autocompletion.sh
-
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
@@ -207,5 +200,5 @@ if [ -f '/Users/zen0/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zen0/googl
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/zen0/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zen0/google-cloud-sdk/completion.zsh.inc'; fi
 
-source /Users/zen0/.docker/init-zsh.sh || true # Added by Docker Desktop
 
+source ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k/powerlevel10k.zsh-theme

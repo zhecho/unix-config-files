@@ -20,23 +20,33 @@ sudo scutil --set ComputerName "$NEW_HOSTNAME"
 
 echo "Hostname change complete."
 echo "Installing software..."
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
-brew install clipy iterm2 && \
-brew install wget bash coreutils git && \
-brew install keepassxc && \
-brew install awsume python-setuptools awscli btop k9s kubectl termshark wireguard-tools tmux nvim tcpdump mtr opentofu terraform terraform-lsp terraform-ls ansible && \
-brew install --cask firefox && \
-brew install --cask wireshark wireshark-chmodbpf minicom visual-studio-code && \
-brew install --cask docker osxfuse ext4fuse && \
-brew install telegram signal && \
-brew install skaffold helm kubecm tree minikube mtr powerlevel10k && \
-brew install vlc sipcalc && \
-brew tap hashicorp/tap && \
-brew install hashicorp/tap/hashicorp-vagrant && \
-brew install quemu && \
-brew install podman && \
-brew install telegram signal viber && \
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
+
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+brew tap hashicorp/tap
+brew install --cask docker 
+brew install --cask firefox
+brew install --cask macfuse
+brew install --cask osxfuse 
 brew install --cask virtualbox
+brew install --cask wireshark 
+brew install --cask wireshark-chmodbpf 
+brew install awsume python-setuptools awscli btop k9s kubectl termshark wireguard-tools tmux nvim tcpdump mtr opentofu terraform terraform-lsp terraform-ls ansible
+brew install clipy iterm2
+brew install hashicorp/tap/hashicorp-vagrant
+brew install keepassxc 
+brew install podman
+brew install qemu
+brew install skaffold helm kubecm tree minikube mtr powerlevel10k
+brew install telegram signal viber
+brew install vlc sipcalc
+brew install wget bash coreutils git
+brwe install --cask visual-studio-code 
+brew install siderolabs/tap/talosctl
+
+# brew install oh-my-posh
+
 
 # Installing Fonts https://github.com/romkatv/powerlevel10k/blob/master/font.md
 font_urls=(
