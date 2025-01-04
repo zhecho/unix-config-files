@@ -29,5 +29,13 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
   end,
 })
 
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 
+vim.keymap.set('n', 'tj', ':bprevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'tk', ':bnext<CR>', { noremap = true, silent = true })
 

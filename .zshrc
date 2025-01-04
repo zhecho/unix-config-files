@@ -202,3 +202,6 @@ if [ -f '/Users/zen0/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zen0
 
 
 source ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k/powerlevel10k.zsh-theme
+
+bindkey '®' history-incremental-search-backward
+bindkey 'ç' sned-break
